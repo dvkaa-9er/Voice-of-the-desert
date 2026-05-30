@@ -139,7 +139,7 @@ export default function DonationModal({ open, onClose }: DonationModalProps) {
             <button onClick={onClose} className="absolute top-4 right-4 text-white/40 hover:text-white text-xl z-10">✕</button>
 
             {/* 3D Tree */}
-            <div className="h-44 bg-gradient-to-b from-obsidian to-slate relative">
+            <div className="h-[clamp(120px,35vw,176px)] bg-gradient-to-b from-obsidian to-slate relative">
               <CanvasBoundary>
                 <Suspense fallback={<div className="w-full h-full flex items-center justify-center text-vermilion/40 text-sm">Loading…</div>}>
                   <TreeSeed growing={growing} treeCount={treeCount} />
@@ -213,7 +213,7 @@ export default function DonationModal({ open, onClose }: DonationModalProps) {
                             key={a}
                             onClick={() => setPpAmount(a)}
                             style={ppAmount === a ? { background: '#E03D1E' } : undefined}
-                            className={`px-4 py-2 rounded-xl font-bold text-sm border transition-all duration-200 ${
+                            className={`px-4 py-2.5 rounded-xl font-bold text-sm border transition-all duration-200 min-h-[44px] ${
                               ppAmount === a ? 'text-white border-transparent' : 'bg-white/5 text-white/70 border-white/10 hover:border-vermilion/40'
                             }`}
                           >
@@ -261,7 +261,7 @@ export default function DonationModal({ open, onClose }: DonationModalProps) {
                                 key={a}
                                 onClick={() => setQpAmount(a)}
                                 style={qpAmount === a ? { background: '#E03D1E' } : undefined}
-                                className={`px-4 py-2 rounded-xl font-bold text-sm border transition-all duration-200 ${
+                                className={`px-4 py-2.5 rounded-xl font-bold text-sm border transition-all duration-200 min-h-[44px] ${
                                   qpAmount === a ? 'text-white border-transparent' : 'bg-white/5 text-white/70 border-white/10 hover:border-vermilion/40'
                                 }`}
                               >

@@ -58,7 +58,7 @@ export default function Partners() {
   const inView = useInView(ref, { once: true, margin: '-80px' })
 
   return (
-    <section id="partners" ref={ref} className="relative py-24 px-6 md:px-12">
+    <section id="partners" ref={ref} className="relative py-16 md:py-24 px-6 md:px-12">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-32 bg-gradient-to-b from-transparent via-gold/30 to-transparent" />
 
       <div className="max-w-6xl mx-auto space-y-14">
@@ -103,7 +103,7 @@ export default function Partners() {
                 >
                   {p.abbr}
                 </div>
-                <span className="text-white/70 text-sm font-medium leading-snug group-hover:text-white transition-colors">
+                <span className="text-white/70 text-sm font-medium leading-snug group-hover:text-white transition-colors line-clamp-2">
                   {locale === 'mn' ? p.nameMn : p.nameEn}
                 </span>
               </motion.div>

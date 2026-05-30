@@ -329,8 +329,8 @@ export default function Sponsors() {
   const tiersInView  = useInView(tiersRef,  { once: true, margin: '-80px' })
 
   return (
-    <section id="sponsors" className="relative py-28 px-6">
-      <div className="max-w-6xl mx-auto space-y-24">
+    <section id="sponsors" className="relative py-16 md:py-28 px-6 md:px-12">
+      <div className="max-w-6xl mx-auto space-y-16 md:space-y-24">
 
         {/* ── Header ──────────────────────────────────────────────────────────── */}
         <div ref={headerRef}>

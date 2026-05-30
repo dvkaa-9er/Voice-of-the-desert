@@ -51,7 +51,7 @@ export default function Contact() {
     <section
       id="contact"
       ref={sectionRef}
-      className="relative min-h-screen flex flex-col justify-center px-6 py-24"
+      className="relative min-h-[100dvh] flex flex-col justify-center px-6 py-16 md:py-24"
     >
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-32 bg-gradient-to-b from-transparent via-gold/30 to-transparent" />
 
@@ -65,7 +65,7 @@ export default function Contact() {
           <p className="text-gold/70 text-xs font-bold tracking-[0.4em] uppercase mb-4">
             Join the Movement
           </p>
-          <h2 className="text-5xl sm:text-6xl font-black text-white mb-3">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-black text-white mb-3">
             {t('contact.title')}
           </h2>
           <p className="text-white/60 text-lg">{t('contact.subtitle')}</p>

@@ -175,21 +175,21 @@ function ShopContent() {
                 <input type="text" name="_trap" tabIndex={-1} autoComplete="off" value={trap} onChange={e => setTrap(e.target.value)} />
               </div>
 
-              <div className="flex gap-2">
+              <div className="flex flex-col sm:flex-row gap-2">
                 <input
                   type="email"
                   required
                   value={email}
                   onChange={e => setEmail(e.target.value)}
                   placeholder={isMn ? 'Имэйл хаяг' : 'your@email.com'}
-                  className="flex-1 bg-white/5 border border-white/12 rounded-full px-5 py-3 text-sm text-white placeholder-white/25 outline-none focus:border-gold/50 transition-colors duration-200"
+                  className="flex-1 bg-white/5 border border-white/12 rounded-full px-5 py-3.5 text-sm text-white placeholder-white/35 outline-none focus:border-vermilion/50 transition-colors duration-200 min-h-[48px]"
                 />
                 <motion.button
                   type="submit"
                   disabled={loading}
                   whileHover={loading ? {} : { scale: 1.04 }}
                   whileTap={loading ? {} : { scale: 0.96 }}
-                  className="rounded-full px-6 py-3 text-[11px] font-black tracking-widest uppercase text-[#0A0A0F] whitespace-nowrap disabled:opacity-60"
+                  className="rounded-full px-6 py-3.5 text-[11px] font-black tracking-widest uppercase text-white whitespace-nowrap disabled:opacity-60 min-h-[48px]"
                   style={{ background: '#E03D1E' }}
                 >
                   {loading ? '…' : (isMn ? 'Мэдэгдэл авах' : 'Notify Me')}

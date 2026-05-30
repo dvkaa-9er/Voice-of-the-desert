@@ -139,7 +139,7 @@ export default function Actions() {
   const inView = useInView(ref, { once: true, margin: '-60px' })
 
   return (
-    <section id="actions" ref={ref} className="relative py-24 px-6 md:px-12">
+    <section id="actions" ref={ref} className="relative py-16 md:py-24 px-6 md:px-12">
       <div className="max-w-6xl mx-auto space-y-12">
 
         {/* ── Section header ──────────────────────────────────────────────────── */}

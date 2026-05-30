@@ -56,7 +56,7 @@ export default function Header({ onDonateClick }: { onDonateClick: () => void })
                 className="group relative text-white/55 hover:text-white text-[11px] font-semibold tracking-[0.25em] uppercase transition-colors duration-200"
               >
                 {t(`nav.${key}`)}
-                <span className="absolute -bottom-1 left-0 w-0 h-px bg-gold group-hover:w-full transition-all duration-300" />
+                <span className="absolute -bottom-1 left-0 w-0 h-px bg-vermilion group-hover:w-full transition-all duration-300" />
               </button>
             ))}
             <Link
@@ -69,7 +69,7 @@ export default function Header({ onDonateClick }: { onDonateClick: () => void })
               <span className="text-[8px] font-black tracking-widest text-orange/70 bg-orange/10 rounded-full px-1.5 py-0.5 leading-none">
                 {t('nav.shopBadge')}
               </span>
-              <span className="absolute -bottom-1 left-0 w-0 h-px bg-gold group-hover:w-full transition-all duration-300" />
+              <span className="absolute -bottom-1 left-0 w-0 h-px bg-vermilion group-hover:w-full transition-all duration-300" />
             </Link>
           </nav>
 
@@ -78,11 +78,11 @@ export default function Header({ onDonateClick }: { onDonateClick: () => void })
             {/* EN / МН */}
             <button
               onClick={toggleLocale}
-              className="text-[10px] font-black tracking-[0.3em] px-3 py-1.5 rounded-full border border-white/10 hover:border-gold/40 transition-colors"
+              className="text-[10px] font-black tracking-[0.3em] px-3 py-2 rounded-full border border-white/10 hover:border-vermilion/40 transition-colors min-h-[36px]"
             >
-              <span className={locale === 'en' ? 'text-gold' : 'text-white/30'}>EN</span>
+              <span className={locale === 'en' ? 'text-vermilion' : 'text-white/30'}>EN</span>
               <span className="text-white/20 mx-1">/</span>
-              <span className={locale === 'mn' ? 'text-gold' : 'text-white/30'}>МН</span>
+              <span className={locale === 'mn' ? 'text-vermilion' : 'text-white/30'}>МН</span>
             </button>
 
             {/* Donate */}
@@ -99,7 +99,7 @@ export default function Header({ onDonateClick }: { onDonateClick: () => void })
             {/* Burger */}
             <button
               onClick={() => setMenuOpen(!menuOpen)}
-              className="lg:hidden flex flex-col gap-1.5 p-2 group"
+              className="lg:hidden flex flex-col justify-center items-center gap-1.5 w-11 h-11 rounded-lg group"
               aria-label="Menu"
             >
               <motion.span
@@ -119,7 +119,7 @@ export default function Header({ onDonateClick }: { onDonateClick: () => void })
         </div>
 
         {/* Expedition progress bar */}
-        <div className="absolute bottom-0 left-0 h-[1px] bg-gradient-to-r from-gold/60 to-orange/60"
+        <div className="absolute bottom-0 left-0 h-[1px] bg-gradient-to-r from-vermilion/60 to-ochre/60"
              style={{ width: `${scrollProgress * 100}%`, transition: 'width 0.1s linear' }} />
       </header>
 
@@ -131,7 +131,7 @@ export default function Header({ onDonateClick }: { onDonateClick: () => void })
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 bg-[#050508]/95 backdrop-blur-2xl flex flex-col items-start justify-center px-10 pt-20"
+            className="fixed inset-0 z-40 bg-[#050508]/95 backdrop-blur-2xl flex flex-col items-start justify-center px-6 sm:px-10 pt-20"
           >
             {NAV_LINKS.map(({ key, id }, i) => (
               <motion.button
@@ -140,7 +140,7 @@ export default function Header({ onDonateClick }: { onDonateClick: () => void })
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: i * 0.07 }}
                 onClick={() => { scrollTo(id); setMenuOpen(false) }}
-                className="text-white/60 hover:text-white font-black text-4xl tracking-tight py-3 transition-colors"
+                className="text-white/60 hover:text-white font-black text-[clamp(24px,7vw,40px)] tracking-tight py-3 transition-colors"
               >
                 {t(`nav.${key}`)}
               </motion.button>
@@ -153,7 +153,7 @@ export default function Header({ onDonateClick }: { onDonateClick: () => void })
               <Link
                 href="/shop"
                 onClick={() => setMenuOpen(false)}
-                className="flex items-center gap-3 text-gold font-black text-4xl tracking-tight py-3 hover:text-gold/80 transition-colors"
+                className="flex items-center gap-3 text-vermilion font-black text-[clamp(24px,7vw,40px)] tracking-tight py-3 hover:text-vermilion/80 transition-colors"
               >
                 {t('nav.shop')}
                 <span className="text-[11px] font-black tracking-widest text-orange/80 bg-orange/10 rounded-full px-2 py-1 leading-none self-center">

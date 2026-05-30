@@ -68,7 +68,7 @@ export default function SectionNav() {
               animate={{
                 width:  isActive ? 20 : 6,
                 opacity: isActive ? 1 : 0.3,
-                background: isActive ? '#D4AF37' : '#ffffff',
+                background: isActive ? '#E03D1E' : '#ffffff',
               }}
               transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
               className="block h-[3px] rounded-full"

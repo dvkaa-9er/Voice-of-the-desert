@@ -33,7 +33,7 @@ export default function About() {
   const inView = useInView(ref, { once: true, margin: '-80px' })
 
   return (
-    <section id="about" ref={ref} className="relative py-24 px-6 md:px-12">
+    <section id="about" ref={ref} className="relative py-16 md:py-24 px-6 md:px-12">
       <div className="max-w-6xl mx-auto space-y-14">
 
         {/* ── Section header ──────────────────────────────────────────────────── */}
@@ -69,7 +69,7 @@ export default function About() {
             initial={{ opacity: 0, scale: 0.92 }}
             animate={inView ? { opacity: 1, scale: 1 } : {}}
             transition={{ delay: 0.3, duration: 0.7 }}
-            className="flex items-start gap-4 p-5 rounded-2xl border border-vermilion/25 bg-vermilion/[0.04] min-w-[220px]"
+            className="flex items-start gap-4 p-5 rounded-2xl border border-vermilion/25 bg-vermilion/[0.04] min-w-[180px] md:min-w-[220px]"
           >
             <div className="relative w-12 h-12 shrink-0">
               <div className="absolute inset-0 rounded-full border border-vermilion/40" />
@@ -100,7 +100,7 @@ export default function About() {
           >
             {locale === 'mn' ? 'Бид юу болох вэ' : 'What we are'}
           </motion.p>
-          <div className="grid sm:grid-cols-3 gap-4">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {WHY_POINTS.map((p, i) => (
               <motion.div
                 key={i}
@@ -121,7 +121,7 @@ export default function About() {
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.35, duration: 0.8 }}
-          className="relative w-full h-56 md:h-72 rounded-2xl overflow-hidden border border-white/8"
+          className="relative w-full h-40 sm:h-56 md:h-72 rounded-2xl overflow-hidden border border-white/8"
         >
           <img
             src="/about-camels.jpg"

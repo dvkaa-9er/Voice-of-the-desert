@@ -37,7 +37,7 @@ export default function Hero({ onDonateClick }: { onDonateClick: () => void }) {
       </div>
 
       {/* ── Main content ───────────────────────────────────────────────────────── */}
-      <div className="flex-1 flex flex-col justify-center items-center text-center px-6 md:px-10 pt-28 pb-8">
+      <div className="flex-1 flex flex-col justify-center items-center text-center px-6 md:px-10 pt-20 md:pt-28 pb-8">
 
         {/* Badge */}
         <motion.div
@@ -101,7 +101,7 @@ export default function Hero({ onDonateClick }: { onDonateClick: () => void }) {
           className="grid grid-cols-2 sm:grid-cols-4 gap-px bg-white/8 rounded-2xl overflow-hidden mb-12 w-full max-w-3xl border border-white/8"
         >
           {STATS.map((s, i) => (
-            <div key={i} className="bg-[#050508] px-5 py-5 flex flex-col items-center gap-1">
+            <div key={i} className="bg-[#050508] px-3 py-4 sm:px-5 sm:py-5 flex flex-col items-center gap-1">
               <span className="text-[clamp(22px,3vw,36px)] font-black text-white leading-none">{s.value}</span>
               <span className="text-vermilion text-[9px] font-black tracking-[0.4em] uppercase">
                 {locale === 'mn' ? s.unitMn : s.unitEn}

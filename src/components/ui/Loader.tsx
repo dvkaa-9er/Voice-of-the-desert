@@ -136,7 +136,7 @@ export default function Loader({ onDone }: LoaderProps) {
         >
           {/* Globe canvas */}
           <motion.div
-            className="w-52 h-52 mb-8"
+            className="w-40 h-40 md:w-52 md:h-52 mb-6 md:mb-8"
             initial={{ scale: 0.4, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.8, ease: [0.34, 1.56, 0.64, 1] }}
@@ -147,9 +147,9 @@ export default function Loader({ onDone }: LoaderProps) {
           </motion.div>
 
           {/* Route progress bar */}
-          <div className="w-48 h-0.5 bg-white/10 rounded-full overflow-hidden mb-8">
+          <div className="w-40 md:w-48 h-0.5 bg-white/10 rounded-full overflow-hidden mb-6 md:mb-8">
             <motion.div
-              className="h-full rounded-full bg-gradient-to-r from-gold to-orange"
+              className="h-full rounded-full bg-gradient-to-r from-vermilion to-ochre"
               style={{ width: `${progress * 100}%` }}
             />
           </div>
@@ -164,7 +164,7 @@ export default function Loader({ onDone }: LoaderProps) {
                 className="text-center"
               >
                 <div className="text-white/50 text-xs tracking-[0.6em] uppercase mb-2">{line1}</div>
-                <div className="text-white font-black text-4xl tracking-widest">{line2}</div>
+                <div className="text-white font-black text-3xl md:text-4xl tracking-widest">{line2}</div>
                 <div className="text-gold/60 text-[10px] tracking-[0.5em] uppercase mt-3">
                   UNCCD COP17 Initiative
                 </div>

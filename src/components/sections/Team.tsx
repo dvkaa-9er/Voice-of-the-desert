@@ -18,7 +18,7 @@ function MemberCard({ member, index, inView }: { member: TeamMember; index: numb
       className="group flex flex-col"
     >
       {/* Photo */}
-      <div className="relative w-full aspect-[3/4] rounded-2xl overflow-hidden mb-4 border border-white/8 group-hover:border-gold/30 transition-colors duration-300">
+      <div className="relative w-full aspect-[3/4] rounded-2xl overflow-hidden mb-4 border border-white/8 group-hover:border-vermilion/30 transition-colors duration-300">
         <img
           src={member.image}
           alt={locale === 'mn' ? member.name : member.nameEn}
@@ -26,14 +26,14 @@ function MemberCard({ member, index, inView }: { member: TeamMember; index: numb
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#050508]/80 via-transparent to-transparent" />
         <div className="absolute bottom-3 left-3 right-3">
-          <span className="text-[9px] font-black tracking-[0.3em] uppercase text-gold/80">
+          <span className="text-[9px] font-black tracking-[0.3em] uppercase text-vermilion/80">
             {t(member.roleKey)}
           </span>
         </div>
       </div>
 
       {/* Name + bio */}
-      <h3 className="text-white font-black text-sm leading-tight group-hover:text-gold transition-colors duration-300">
+      <h3 className="text-white font-black text-sm leading-tight group-hover:text-vermilion transition-colors duration-300">
         {locale === 'mn' ? member.name : member.nameEn}
       </h3>
       <p className="text-white/40 text-[11px] mt-1.5 leading-relaxed">
@@ -49,7 +49,7 @@ export default function Team() {
   const inView = useInView(ref, { once: true, margin: '-10%' })
 
   return (
-    <section id="team" ref={ref} className="relative py-24 px-6 md:px-12">
+    <section id="team" ref={ref} className="relative py-16 md:py-24 px-6 md:px-12">
       <div
         className="absolute top-1/2 right-[-0.05em] -translate-y-1/2 font-black leading-none select-none pointer-events-none text-white/[0.025]"
         style={{ fontSize: 'clamp(140px,20vw,280px)' }}
@@ -65,7 +65,7 @@ export default function Team() {
           className="space-y-3 mb-14"
         >
           <div className="flex items-center gap-3">
-            <div className="w-8 h-px bg-gold/60" />
+            <div className="w-8 h-px bg-vermilion/60" />
             <p className="text-gold/70 text-[10px] font-black tracking-[0.5em] uppercase">Leadership</p>
           </div>
           <h2
@@ -77,7 +77,7 @@ export default function Team() {
           <p className="text-white/50 text-sm max-w-md">{t('team.subtitle')}</p>
         </motion.div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-5">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-5">
           {TEAM.map((m, i) => (
             <MemberCard key={m.id} member={m} index={i} inView={inView} />
           ))}
