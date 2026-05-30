@@ -1,26 +1,62 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-gold:    #D4AF37;
+  --color-orange:  #FF6B35;
+  --color-red:     #E34234;
+  --color-sand:    #C9A84C;
+  --color-green:   #2D7A4F;
+  --color-obsidian:#050508;
+  --color-slate:   #1A1A2E;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ── Base ───────────────────────────────────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #050508;
+  color: white;
+  overflow-x: hidden;
+  font-family: system-ui, -apple-system, 'Segoe UI', 'Helvetica Neue', sans-serif;
+}
+
+/* ── Custom cursor — hide native when JS cursor active ──────────────────────── */
+body:not(.touch) * { cursor: none !important; }
+
+/* ── Scrollbar ──────────────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(212,175,55,0.4); border-radius: 2px; }
+
+::selection { background: rgba(212,175,55,0.25); color: white; }
+
+/* ── Kinetic text entrance ──────────────────────────────────────────────────── */
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(40px) skewY(2deg); }
+  to   { opacity: 1; transform: translateY(0)    skewY(0); }
+}
+
+/* ── Section divider glow lines ─────────────────────────────────────────────── */
+.divider-glow {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212,175,55,0.3), transparent);
+}
+
+/* ── Scrollbar progress hides on mobile ─────────────────────────────────────── */
+@media (max-width: 768px) {
+  ::-webkit-scrollbar { display: none; }
+}
+
+/* ── Remove tap highlight on mobile ─────────────────────────────────────────── */
+* { -webkit-tap-highlight-color: transparent; }
+
+/* ── Gradient text utility ──────────────────────────────────────────────────── */
+.text-gradient-gold {
+  background: linear-gradient(135deg, #D4AF37, #FF6B35, #E34234);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }

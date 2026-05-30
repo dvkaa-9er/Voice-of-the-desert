@@ -1,0 +1,167 @@
+'use client'
+
+import { useRef } from 'react'
+import { motion, useInView } from 'framer-motion'
+import { useLanguage } from '@/components/providers/LanguageProvider'
+
+const COUNTRIES = ['Mongolia','China','Kazakhstan','Uzbekistan','Tajikistan','Kyrgyzstan']
+
+const WHY_POINTS = [
+  {
+    titleMn: 'Газрын доройтол',
+    titleEn: 'Land degradation',
+    bodyMn: 'Евразийн цөлжсөн бүс нутагт 100 сая гаруй хүн амьдардаг. Газрын доройтол нь тэдний амьжиргаа, хүнсний аюулгүй байдалд шууд аюул учруулж байна.',
+    bodyEn: 'Over 100 million people live in Eurasia\'s desertified zones. Land degradation directly threatens their livelihoods and food security.',
+  },
+  {
+    titleMn: 'Дангаараа биш — хамтдаа',
+    titleEn: 'Not alone — together',
+    bodyMn: 'Шинжлэх ухааны мэдээлэл дангаараа олон нийтэд хүрэхгүй. Сэтгэл хөдлөл, бодит үйлдэл, нийгмийн оролцоотой уялдах шаардлагатай.',
+    bodyEn: 'Scientific data alone doesn\'t reach the public. It must be connected to emotion, real action, and civic participation.',
+  },
+  {
+    titleMn: 'Монгол — тэргүүлэгч улс',
+    titleEn: 'Mongolia leads',
+    bodyMn: 'Монгол Улс UNCCD COP17-ын тавцанд цөлжилтийн эсрэг тэмцлийн тэргүүлэгч улс болж, дэлхийд бодит үлгэр дуурайлал болохыг зорьж байна.',
+    bodyEn: 'Mongolia is stepping up as a global leader in the fight against desertification, setting a concrete example at UNCCD COP17.',
+  },
+]
+
+export default function About() {
+  const { t, locale } = useLanguage()
+  const ref    = useRef<HTMLDivElement>(null)
+  const inView = useInView(ref, { once: true, margin: '-80px' })
+
+  return (
+    <section id="about" ref={ref} className="relative py-24 px-6 md:px-12">
+      <div className="max-w-6xl mx-auto space-y-14">
+
+        {/* ── Section header ──────────────────────────────────────────────────── */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7 }}
+          className="space-y-2"
+        >
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-px bg-gold/60" />
+            <span className="text-gold/70 text-[10px] font-black tracking-[0.5em] uppercase">{t('about.subtitle')}</span>
+          </div>
+          <h2 className="text-[clamp(36px,6vw,72px)] font-black text-white leading-[0.92] tracking-[-0.02em]">
+            {t('about.title')}
+          </h2>
+        </motion.div>
+
+        {/* ── Mission text + UNCCD ────────────────────────────────────────────── */}
+        <div className="grid md:grid-cols-[1fr_auto] gap-10 items-start">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.15, duration: 0.8 }}
+          >
+            <p className="text-white/75 text-[clamp(15px,1.5vw,18px)] leading-[1.8]">
+              {t('about.body')}
+            </p>
+          </motion.div>
+
+          {/* UNCCD badge */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.92 }}
+            animate={inView ? { opacity: 1, scale: 1 } : {}}
+            transition={{ delay: 0.3, duration: 0.7 }}
+            className="flex items-start gap-4 p-5 rounded-2xl border border-gold/25 bg-gold/[0.04] min-w-[220px]"
+          >
+            <div className="relative w-12 h-12 shrink-0">
+              <div className="absolute inset-0 rounded-full border border-gold/40" />
+              <div className="absolute inset-0 flex items-center justify-center text-gold font-black text-[8px] tracking-wider text-center leading-tight">UN<br/>CCD</div>
+              <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 10, ease: 'linear' }} className="absolute inset-0">
+                <div className="w-2 h-2 rounded-full bg-gold absolute -top-1 left-1/2 -translate-x-1/2" />
+              </motion.div>
+            </div>
+            <div>
+              <div className="text-gold font-black text-sm">UNCCD COP17</div>
+              <div className="text-white/60 text-xs mt-1 leading-relaxed">
+                {locale === 'mn'
+                  ? 'НҮБ-ийн Цөлжилтийн эсрэг конвенцийн 17 дахь талуудын чуулган'
+                  : 'UN Convention to Combat Desertification — 17th Conference of the Parties'
+                }
+              </div>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* ── Why this matters ────────────────────────────────────────────────── */}
+        <div className="space-y-4">
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={inView ? { opacity: 1 } : {}}
+            transition={{ delay: 0.2, duration: 0.6 }}
+            className="text-white/35 text-[10px] font-black tracking-[0.45em] uppercase"
+          >
+            {locale === 'mn' ? 'Яагаад чухал вэ?' : 'Why this matters'}
+          </motion.p>
+          <div className="grid sm:grid-cols-3 gap-4">
+            {WHY_POINTS.map((p, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ delay: 0.25 + i * 0.1, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+                className="p-5 rounded-xl border border-white/8 bg-white/[0.025] space-y-2"
+              >
+                <h4 className="text-white font-bold text-sm">{locale === 'mn' ? p.titleMn : p.titleEn}</h4>
+                <p className="text-white/55 text-xs leading-relaxed">{locale === 'mn' ? p.bodyMn : p.bodyEn}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        {/* ── Desert photo ────────────────────────────────────────────────────── */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.35, duration: 0.8 }}
+          className="relative w-full h-56 md:h-72 rounded-2xl overflow-hidden border border-white/8"
+        >
+          <img
+            src="/about-camels.jpg"
+            alt="Bactrian camels by a desert river in Mongolia"
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#050508]/60 to-transparent" />
+          <div className="absolute bottom-4 left-5">
+            <p className="text-white/50 text-[10px] font-semibold tracking-wider uppercase">
+              {locale === 'mn' ? 'Монголын Говь цөл — экспедицийн эхлэл' : 'Mongolian Gobi — where the expedition begins'}
+            </p>
+          </div>
+        </motion.div>
+
+        {/* ── Countries on the route ──────────────────────────────────────────── */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.4, duration: 0.7 }}
+          className="space-y-3"
+        >
+          <p className="text-white/35 text-[10px] font-black tracking-[0.45em] uppercase">
+            {locale === 'mn' ? 'Маршрутын улсууд' : 'Countries on the route'}
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {COUNTRIES.map((c, i) => (
+              <motion.span
+                key={c}
+                initial={{ opacity: 0, scale: 0.85 }}
+                animate={inView ? { opacity: 1, scale: 1 } : {}}
+                transition={{ delay: 0.45 + i * 0.05, duration: 0.4 }}
+                className="px-3 py-1.5 rounded-full text-xs font-semibold border border-white/12 text-white/65 bg-white/[0.04] hover:border-gold/30 hover:text-white/85 transition-colors"
+              >
+                {c}
+              </motion.span>
+            ))}
+          </div>
+        </motion.div>
+
+      </div>
+    </section>
+  )
+}
