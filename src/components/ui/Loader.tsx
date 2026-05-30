@@ -104,7 +104,7 @@ export default function Loader({ onDone }: LoaderProps) {
   useEffect(() => {
     // Phase 1: draw the route (0 → 100% over 2.2s)
     const startTime = performance.now()
-    const DRAW_DUR  = 2200
+    const DRAW_DUR  = 1400   // was 2200
 
     const tick = () => {
       const elapsed = performance.now() - startTime
@@ -114,11 +114,11 @@ export default function Loader({ onDone }: LoaderProps) {
         requestAnimationFrame(tick)
       } else {
         setPhase('title')
-        setTimeout(() => setTitleReady(true), 200)
+        setTimeout(() => setTitleReady(true), 150)
         setTimeout(() => {
           setExiting(true)
-          setTimeout(onDone, 900)
-        }, 3200)
+          setTimeout(onDone, 700)
+        }, 1800)   // was 3200
       }
     }
     requestAnimationFrame(tick)

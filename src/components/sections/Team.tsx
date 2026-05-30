@@ -1,6 +1,7 @@
 'use client'
 
 import { useRef } from 'react'
+import Image from 'next/image'
 import { motion, useInView } from 'framer-motion'
 import { useLanguage } from '@/components/providers/LanguageProvider'
 import { TEAM } from '@/lib/constants'
@@ -19,10 +20,12 @@ function MemberCard({ member, index, inView }: { member: TeamMember; index: numb
     >
       {/* Photo */}
       <div className="relative w-full aspect-[3/4] rounded-2xl overflow-hidden mb-4 border border-white/8 group-hover:border-vermilion/30 transition-colors duration-300">
-        <img
+        <Image
           src={member.image}
           alt={locale === 'mn' ? member.name : member.nameEn}
-          className="absolute inset-0 w-full h-full object-cover object-top grayscale group-hover:grayscale-0 transition-all duration-500"
+          fill
+          className="object-cover object-top grayscale group-hover:grayscale-0 transition-all duration-500"
+          sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 17vw"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#050508]/80 via-transparent to-transparent" />
         <div className="absolute bottom-3 left-3 right-3">

@@ -1,6 +1,7 @@
 'use client'
 
 import { useRef } from 'react'
+import Image from 'next/image'
 import { motion, useInView } from 'framer-motion'
 import { useLanguage } from '@/components/providers/LanguageProvider'
 
@@ -131,10 +132,13 @@ export default function About() {
           transition={{ delay: 0.35, duration: 0.8 }}
           className="relative w-full h-40 sm:h-56 md:h-72 rounded-2xl overflow-hidden border border-white/8"
         >
-          <img
+          <Image
             src="/about-camels.jpg"
             alt="Bactrian camels by a desert river in Mongolia"
-            className="absolute inset-0 w-full h-full object-cover"
+            fill
+            className="object-cover"
+            sizes="(max-width: 768px) 100vw, 90vw"
+            priority
           />
           <div className="absolute inset-0 bg-gradient-to-r from-[#050508]/60 to-transparent" />
           <div className="absolute bottom-4 left-5">

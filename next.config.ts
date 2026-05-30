@@ -44,8 +44,23 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
-  // Suppress the X-Powered-By: Next.js header — no reason to advertise the framework
   poweredByHeader: false,
+
+  // Tree-shake large packages — reduces JS sent to the browser
+  experimental: {
+    optimizePackageImports: [
+      'three',
+      '@react-three/fiber',
+      '@react-three/drei',
+      '@react-three/postprocessing',
+      'framer-motion',
+    ],
+  },
+
+  // Serve images as WebP/AVIF automatically (Next.js Image component)
+  images: {
+    formats: ['image/avif', 'image/webp'],
+  },
 
   async headers() {
     return [
