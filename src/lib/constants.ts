@@ -1,3 +1,75 @@
+export type NewsCategory = 'expedition' | 'science' | 'media' | 'press'
+
+export const CATEGORY_COLOR: Record<NewsCategory, string> = {
+  expedition: '#E03D1E',
+  science:    '#1E5855',
+  media:      '#C8841A',
+  press:      'rgba(255,255,255,0.45)',
+}
+
+export const NEWS = [
+  {
+    id: 1,
+    date: '2026-05-15',
+    category: 'expedition' as NewsCategory,
+    titleEn: 'B. Budjargal completes Gobi Desert leg — 1,200 km in 28 days',
+    titleMn: 'Б.Буджаргал Говийн маршрутыг дуусгалаа — 28 хоногт 1,200 км',
+    excerptEn: 'The first major segment of the expedition has been completed, crossing Mongolia\'s Gobi Desert in record time.',
+    excerptMn: 'Экспедицийн эхний том маршрут болох Монголын Говийг рекорд хугацаанд туулж, амжилттай дуусгалаа.',
+    href: '#',
+  },
+  {
+    id: 2,
+    date: '2026-04-28',
+    category: 'science' as NewsCategory,
+    titleEn: 'Research team publishes first findings on land degradation across Gobi corridor',
+    titleMn: 'Судалгааны баг Говийн коридорт газрын доройтлын анхны дүнгээ нийтлэв',
+    excerptEn: 'Dr. Khaulandbek\'s team released preliminary data showing accelerating desertification rates in Eastern Mongolia.',
+    excerptMn: 'Д.Хауланбекийн баг Монгол Улсын зүүн хэсэгт цөлжилт хурдацтай явагдаж буйг харуулсан урьдчилсан мэдээллийг гаргалаа.',
+    href: '#',
+  },
+  {
+    id: 3,
+    date: '2026-04-10',
+    category: 'media' as NewsCategory,
+    titleEn: 'Desert Voice documentary trailer released internationally',
+    titleMn: '"Цөлийн дуу хоолой" баримтат киноны трейлер олон улсад гарлаа',
+    excerptEn: 'The official trailer has been released, garnering over 2 million views in its first week across social media.',
+    excerptMn: 'Ёсны трейлер гарч, эхний 7 хоногт сошиал медиад 2 саяас дээш үзэлтэй болов.',
+    href: '#',
+  },
+  {
+    id: 4,
+    date: '2026-03-20',
+    category: 'press' as NewsCategory,
+    titleEn: 'UNCCD COP17 officially endorses Voice of the Desert initiative',
+    titleMn: 'UNCCD COP17 "Цөлийн дуу хоолой" санаачилгыг албан ёсоор дэмжлээ',
+    excerptEn: 'The United Nations Convention to Combat Desertification has recognized Voice of the Desert as a flagship initiative for COP17.',
+    excerptMn: 'НҮБ-ын Цөлжилттэй тэмцэх конвенц "Цөлийн дуу хоолой"-г COP17-ын тэргүүлэх санаачилга болгон хүлээн зөвшөөрлөө.',
+    href: '#',
+  },
+  {
+    id: 5,
+    date: '2026-03-01',
+    category: 'expedition' as NewsCategory,
+    titleEn: 'Route confirmed: 12,000 km across 7 nations',
+    titleMn: 'Маршрут батлагдлаа: 7 улсаар дамжих 12,000 км',
+    excerptEn: 'The full route connecting Mongolia, China, Kazakhstan, Kyrgyzstan, Tajikistan, Uzbekistan and Russia is officially set.',
+    excerptMn: '7 улсыг холбосон бүтэн маршрут албан ёсоор батлагдлаа.',
+    href: '#',
+  },
+  {
+    id: 6,
+    date: '2026-02-14',
+    category: 'media' as NewsCategory,
+    titleEn: 'Central Television begins live expedition coverage',
+    titleMn: 'Централ Телевиз экспедицийн шууд дамжуулалтыг эхлүүллээ',
+    excerptEn: 'Mongolia\'s Central Television commenced daily live coverage, reaching an estimated 15 million viewers across Eurasia.',
+    excerptMn: 'Монголын Централ Телевиз өдөр тутмын шууд дамжуулалтыг эхлүүлж, Евразийн 15 сая үзэгчдэд хүрэж байна.',
+    href: '#',
+  },
+] as const
+
 export const TEAM = [
   {
     id: 1,
