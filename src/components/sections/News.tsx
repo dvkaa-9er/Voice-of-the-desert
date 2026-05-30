@@ -106,7 +106,7 @@ export default function News() {
                   </div>
 
                   {/* Title */}
-                  <h3 className="font-display font-black text-white text-sm leading-snug group-hover:text-white/90 transition-colors">
+                  <h3 className="font-black text-white text-sm leading-snug group-hover:text-white/90 transition-colors">
                     {title}
                   </h3>
 
