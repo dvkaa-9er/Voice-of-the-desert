@@ -10,6 +10,7 @@ import Actions from '@/components/sections/Actions'
 import Team from '@/components/sections/Team'
 import Partners from '@/components/sections/Partners'
 import Sponsors from '@/components/sections/Sponsors'
+import Merch from '@/components/sections/Merch'
 import Contact from '@/components/sections/Contact'
 import DonationModal from '@/components/ui/DonationModal'
 import NoiseOverlay from '@/components/ui/NoiseOverlay'
@@ -64,6 +65,8 @@ export default function Home() {
               <Partners />
               <div className="divider-glow mx-6 md:mx-12" />
               <Sponsors />
+              <div className="divider-glow mx-6 md:mx-12" />
+              <Merch />
               <div className="divider-glow mx-6 md:mx-12" />
               <Contact />
             </main>

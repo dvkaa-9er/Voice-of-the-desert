@@ -4,26 +4,26 @@ import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { useLanguage } from '@/components/providers/LanguageProvider'
 
-const COUNTRIES = ['Mongolia','China','Kazakhstan','Uzbekistan','Tajikistan','Kyrgyzstan']
+const COUNTRIES = ['Mongolia', 'China', 'Kazakhstan', 'Kyrgyzstan', 'Tajikistan', 'Uzbekistan', 'Russia']
 
 const WHY_POINTS = [
   {
-    titleMn: 'Газрын доройтол',
-    titleEn: 'Land degradation',
-    bodyMn: 'Евразийн цөлжсөн бүс нутагт 100 сая гаруй хүн амьдардаг. Газрын доройтол нь тэдний амьжиргаа, хүнсний аюулгүй байдалд шууд аюул учруулж байна.',
-    bodyEn: 'Over 100 million people live in Eurasia\'s desertified zones. Land degradation directly threatens their livelihoods and food security.',
+    titleMn: 'Шинжлэх ухаанд суурилсан платформ',
+    titleEn: 'A science-grounded platform',
+    bodyMn: 'Цөлжилтийг хүний нүдэнд харагдах, ойлгомжтой болгодог. Энэ нь алдагдлын тухай кампанит ажил биш — асуудал руу гүйх дуудлага.',
+    bodyEn: 'Makes desertification visible and human. It is not a campaign about loss — it is a call to run toward the problem.',
   },
   {
-    titleMn: 'Дангаараа биш — хамтдаа',
-    titleEn: 'Not alone — together',
-    bodyMn: 'Шинжлэх ухааны мэдээлэл дангаараа олон нийтэд хүрэхгүй. Сэтгэл хөдлөл, бодит үйлдэл, нийгмийн оролцоотой уялдах шаардлагатай.',
-    bodyEn: 'Scientific data alone doesn\'t reach the public. It must be connected to emotion, real action, and civic participation.',
+    titleMn: 'Монголын санаачилга, олон улсын тавцан',
+    titleEn: 'Mongolian initiative, international stage',
+    bodyMn: 'Монгол Улсын тэргүүлсэн, олон улсын түнштэй хамтарсан санаачилга. Спорт, судалгаа, медиа, бодлогын уулзвар дэх цэг.',
+    bodyEn: 'A Mongolian initiative with an international stage and partners. A meeting point for sport, research, media and policy.',
   },
   {
-    titleMn: 'Монгол — тэргүүлэгч улс',
-    titleEn: 'Mongolia leads',
-    bodyMn: 'Монгол Улс UNCCD COP17-ын тавцанд цөлжилтийн эсрэг тэмцлийн тэргүүлэгч улс болж, дэлхийд бодит үлгэр дуурайлал болохыг зорьж байна.',
-    bodyEn: 'Mongolia is stepping up as a global leader in the fight against desertification, setting a concrete example at UNCCD COP17.',
+    titleMn: '120 хоногийн амьд түүх',
+    titleEn: 'A long-form story, told live',
+    bodyMn: 'Өдөр бүр, 120 хоногийн турш бодит цаг хугацаанд дамжуулагдана. Тоо баримт нь брэндийн нуруу нугас: тодорхой, давтагдах, иш татах боломжтой.',
+    bodyEn: 'Told live, every day, for 120 days. The numbers are the brand\'s backbone: concrete, repeatable, quotable.',
   },
 ]
 
@@ -44,8 +44,8 @@ export default function About() {
           className="space-y-2"
         >
           <div className="flex items-center gap-3">
-            <div className="w-8 h-px bg-gold/60" />
-            <span className="text-gold/70 text-[10px] font-black tracking-[0.5em] uppercase">{t('about.subtitle')}</span>
+            <div className="w-8 h-px bg-vermilion/60" />
+            <span className="text-vermilion/70 text-[10px] font-black tracking-[0.5em] uppercase">{t('about.subtitle')}</span>
           </div>
           <h2 className="text-[clamp(36px,6vw,72px)] font-black text-white leading-[0.92] tracking-[-0.02em]">
             {t('about.title')}
@@ -69,17 +69,17 @@ export default function About() {
             initial={{ opacity: 0, scale: 0.92 }}
             animate={inView ? { opacity: 1, scale: 1 } : {}}
             transition={{ delay: 0.3, duration: 0.7 }}
-            className="flex items-start gap-4 p-5 rounded-2xl border border-gold/25 bg-gold/[0.04] min-w-[220px]"
+            className="flex items-start gap-4 p-5 rounded-2xl border border-vermilion/25 bg-vermilion/[0.04] min-w-[220px]"
           >
             <div className="relative w-12 h-12 shrink-0">
-              <div className="absolute inset-0 rounded-full border border-gold/40" />
-              <div className="absolute inset-0 flex items-center justify-center text-gold font-black text-[8px] tracking-wider text-center leading-tight">UN<br/>CCD</div>
+              <div className="absolute inset-0 rounded-full border border-vermilion/40" />
+              <div className="absolute inset-0 flex items-center justify-center text-vermilion font-black text-[8px] tracking-wider text-center leading-tight">UN<br/>CCD</div>
               <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 10, ease: 'linear' }} className="absolute inset-0">
-                <div className="w-2 h-2 rounded-full bg-gold absolute -top-1 left-1/2 -translate-x-1/2" />
+                <div className="w-2 h-2 rounded-full bg-vermilion absolute -top-1 left-1/2 -translate-x-1/2" />
               </motion.div>
             </div>
             <div>
-              <div className="text-gold font-black text-sm">UNCCD COP17</div>
+              <div className="text-vermilion font-black text-sm">UNCCD COP17</div>
               <div className="text-white/60 text-xs mt-1 leading-relaxed">
                 {locale === 'mn'
                   ? 'НҮБ-ийн Цөлжилтийн эсрэг конвенцийн 17 дахь талуудын чуулган'
@@ -98,7 +98,7 @@ export default function About() {
             transition={{ delay: 0.2, duration: 0.6 }}
             className="text-white/35 text-[10px] font-black tracking-[0.45em] uppercase"
           >
-            {locale === 'mn' ? 'Яагаад чухал вэ?' : 'Why this matters'}
+            {locale === 'mn' ? 'Бид юу болох вэ' : 'What we are'}
           </motion.p>
           <div className="grid sm:grid-cols-3 gap-4">
             {WHY_POINTS.map((p, i) => (
@@ -153,7 +153,7 @@ export default function About() {
                 initial={{ opacity: 0, scale: 0.85 }}
                 animate={inView ? { opacity: 1, scale: 1 } : {}}
                 transition={{ delay: 0.45 + i * 0.05, duration: 0.4 }}
-                className="px-3 py-1.5 rounded-full text-xs font-semibold border border-white/12 text-white/65 bg-white/[0.04] hover:border-gold/30 hover:text-white/85 transition-colors"
+                className="px-3 py-1.5 rounded-full text-xs font-semibold border border-white/12 text-white/65 bg-white/[0.04] hover:border-vermilion/30 hover:text-white/85 transition-colors"
               >
                 {c}
               </motion.span>

@@ -8,12 +8,30 @@ export default function Contact() {
   const { t } = useLanguage()
   const sectionRef = useRef<HTMLDivElement>(null)
   const inView = useInView(sectionRef, { once: true, margin: '-80px' })
-  const [sent, setSent] = useState(false)
-  const [form, setForm] = useState({ name: '', email: '', message: '' })
+  const [sent, setSent]       = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [error, setError]     = useState('')
+  const [form, setForm]       = useState({ name: '', email: '', message: '' })
+  const [trap, setTrap]       = useState('')  // honeypot — must stay empty
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setSent(true)
+    setLoading(true)
+    setError('')
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...form, _trap: trap }),
+      })
+      const data = await res.json() as { ok?: boolean; error?: string }
+      if (!res.ok) throw new Error(data.error ?? 'Something went wrong.')
+      setSent(true)
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Something went wrong.')
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -48,6 +66,10 @@ export default function Contact() {
         >
           {!sent ? (
             <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+              {/* Honeypot — hidden from humans, filled by bots */}
+              <div style={{ position: 'absolute', left: '-9999px', width: 1, height: 1, overflow: 'hidden' }} aria-hidden="true">
+                <input type="text" name="_trap" tabIndex={-1} autoComplete="off" value={trap} onChange={e => setTrap(e.target.value)} />
+              </div>
               {[
                 { key: 'name', type: 'text', field: 'name' },
                 { key: 'email', type: 'email', field: 'email' },
@@ -81,13 +103,19 @@ export default function Contact() {
                 />
               </div>
 
+              {error && (
+                <p className="text-red-400 text-xs text-center -mb-1">{error}</p>
+              )}
+
               <motion.button
                 type="submit"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="w-full py-4 rounded-xl font-black text-sm tracking-wider uppercase text-obsidian bg-gradient-to-r from-gold to-orange shadow-lg hover:shadow-gold/30 transition-shadow mt-2"
+                disabled={loading}
+                whileHover={loading ? {} : { scale: 1.02 }}
+                whileTap={loading ? {} : { scale: 0.98 }}
+                className="w-full py-4 rounded-xl font-black text-sm tracking-wider uppercase text-white shadow-lg transition-shadow mt-2 disabled:opacity-60 disabled:cursor-not-allowed"
+                style={{ background: '#E03D1E' }}
               >
-                {t('contact.send')}
+                {loading ? '…' : t('contact.send')}
               </motion.button>
             </form>
           ) : (

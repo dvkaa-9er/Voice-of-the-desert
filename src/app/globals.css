@@ -1,6 +1,13 @@
 @import "tailwindcss";
 
 @theme inline {
+  /* Brand primaries (from brand guidelines v1.0) */
+  --color-vermilion: #E03D1E;   /* Brand primary — camel mark, CTAs, Desert Motion */
+  --color-teal:      #1E5855;   /* Basin Teal — Desert Science accent */
+  --color-ochre:     #C8841A;   /* Ochre — Desert Voice accent */
+  --color-bone:      #EDE8DC;   /* Brand light field */
+
+  /* Legacy / supporting tones — kept for backward compat */
   --color-gold:    #D4AF37;
   --color-orange:  #FF6B35;
   --color-red:     #E34234;
@@ -53,10 +60,17 @@ body:not(.touch) * { cursor: none !important; }
 /* ── Remove tap highlight on mobile ─────────────────────────────────────────── */
 * { -webkit-tap-highlight-color: transparent; }
 
-/* ── Gradient text utility ──────────────────────────────────────────────────── */
+/* ── Gradient text utility — now uses brand Vermilion ───────────────────────── */
 .text-gradient-gold {
-  background: linear-gradient(135deg, #D4AF37, #FF6B35, #E34234);
+  background: linear-gradient(135deg, #E03D1E, #C8841A);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+/* ── Brand display serif — applied to editorial headlines ────────────────────── */
+.font-display {
+  font-family: var(--font-display, 'Georgia', serif);
+  font-weight: 700;
+  font-style: normal;
 }

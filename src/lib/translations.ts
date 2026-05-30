@@ -10,6 +10,8 @@ export const translations: Record<Locale, Record<string, string>> = {
     'nav.sponsors': 'Sponsors',
     'nav.contact': 'Contact',
     'nav.donate': 'Donate Now',
+    'nav.shop': 'Shop',
+    'nav.shopBadge': 'Soon',
 
     // Hero
     'hero.title': 'VOICE OF THE DESERT',
@@ -20,7 +22,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     'about.title': 'The Mission',
     'about.subtitle': 'Aligned with UNCCD COP17',
     'about.body':
-      'Voice of the Desert is a Mongolian-led global initiative responding to one of the most urgent environmental crises of our time — desertification across Eurasia. By raising a unified international voice, the project directly supports the UNCCD COP17 agenda and calls on governments, scientists, and communities to act.',
+      'Voice of the Desert is a Mongolia-led international initiative that unites sport, science and media to confront desertification — timed to the UNCCD COP17 global summit. It begins as a 120-day endurance expedition across roughly 12,000 kilometres of Eurasian drylands, led by world-champion ultra-runner B.Budjargal. Along the route, an international research team studies land degradation, livelihoods and the climate pressures reshaping the region. Every kilometre becomes a story — filmed, photographed and shared with the world.',
 
     // Stats
     'statsLabel.km': 'Kilometers',
@@ -33,27 +35,27 @@ export const translations: Record<Locale, Record<string, string>> = {
     'statsSubLabel.reach': 'global audience reach',
 
     // Actions
-    'actions.title': 'Three Pillars of Action',
+    'actions.title': 'Three pillars, one route.',
     'actions.motion.title': 'Desert Motion',
-    'actions.motion.subtitle': 'International Endurance Sports Expedition',
+    'actions.motion.subtitle': 'The endurance expedition — the visible engine that draws the world\'s attention.',
     'actions.motion.desc':
-      'The 120-day expedition led by world champion B. Budjargal will traverse 12,000 km through 7 countries in Eurasia\'s desertified regions. This route represents human endurance, harsh natural conditions, cross-border connectivity, and the scale of the Mongolian initiative.',
+      'A 120-day endurance expedition led by world-champion ultra-runner B.Budjargal, crossing roughly 12,000 km of Eurasian drylands. Motion is the pillar people see first — human effort against a hard landscape, broadcast in real time.',
     'actions.motion.tag':
-      'The most visible and attention-grabbing core driving force of the project. It expresses the Mongolian initiative through real routing and action.',
+      'The brand is built on three interlocking pillars. Each carries its own name, role and visual accent — but they share one route, one camel, one voice.',
     'actions.motion.cta': 'Track Expedition',
     'actions.science.title': 'Desert Science',
-    'actions.science.subtitle': 'Science-Based Joint Research',
+    'actions.science.subtitle': 'Collaborative research along the route — the evidence that gives the story weight.',
     'actions.science.desc':
-      'An integrated environmental-social-economic research program implemented along the route will scientifically identify desertification, drought, livelihood, regional challenges, and cooperation opportunities.',
+      'An integrated environmental–social–economic study runs the length of the route, examining land degradation, drought, livelihoods and regional cooperation. Its findings feed policy material and science-based recommendations for COP17.',
     'actions.science.tag':
-      'Results will become policy content, science-based recommendations, and valuable materials for use at COP17.',
+      'The numbers are the brand\'s backbone: concrete, repeatable, quotable.',
     'actions.science.cta': 'Explore Research',
     'actions.voice.title': 'Desert Voice',
-    'actions.voice.subtitle': 'Documentary Film, Digital Narrative, International Content',
+    'actions.voice.subtitle': 'Film, photography and daily narrative — the channel that carries it to the world.',
     'actions.voice.desc':
-      'The expedition route, real stories, people\'s lives, environmental changes, and cooperation narratives will be distributed internationally through documentary films, photo projects, daily social content, and special media narratives.',
+      'Two feature documentaries, a photo project, daily social content and special media turn the route into a living story. Voice is the brand\'s loudest, most public surface — where motion and science become something people feel.',
     'actions.voice.tag':
-      'The primary platform building the project\'s international visibility, brand narrative, social impact, and media value.',
+      'The brand exists to turn a vast, abstract crisis into something human, visible and worth acting on. It is not a campaign about loss. It is a call to run toward the problem.',
     'actions.voice.cta': 'Watch Trailer',
 
     // Team
@@ -100,6 +102,8 @@ export const translations: Record<Locale, Record<string, string>> = {
     'nav.sponsors': 'Ивээн тэтгэгчид',
     'nav.contact': 'Холбоо барих',
     'nav.donate': 'Хандив өгөх',
+    'nav.shop': 'Дэлгүүр',
+    'nav.shopBadge': 'Удахгүй',
 
     // Hero
     'hero.title': 'ЦӨЛИЙН ДУУ ХООЛОЙ',
@@ -110,7 +114,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     'about.title': 'Эрхэм зорилго',
     'about.subtitle': 'UNCCD COP17-той уялдаатай',
     'about.body':
-      '"Цөлийн дуу хоолой" бол манай үеийн хамгийн яаралтай байгаль орчны хямрал болох Евразийн цөлжилтийн эсрэг Монголын санаачилгаар хэрэгжих дэлхийн хэмжээний хөдөлгөөн юм. Нэгдсэн олон улсын дуу хоолойгоо өргөн, UNCCD COP17-ын тавцанд засгийн газар, эрдэмтэд болон олон нийтийг хамтарч ажиллахад уриалж байна.',
+      '"Цөлийн дуу хоолой" нь спорт, шинжлэх ухаан, медиа гурвыг нэгтгэн цөлжилтийн асуудалд чиглэсэн, UNCCD COP17-тэй уялдан хэрэгжих Монголын санаачилгаар удирдагдсан олон улсын хөдөлгөөн юм. Дэлхийн аварга Б.Буджаргалын манлайлсан 120 хоногийн экспедиц Евразийн цөлжсөн бүс нутгийн 7 улсаар дамжин 12,000 километр зам туулна. Маршрутын дагуу олон улсын судалгааны баг газрын доройтол, амьжиргаа, уур амьсгалын дарамтыг судална. Тухайн газрын бодит түүх болж — кино, фото, дэлхийд түгээгдэнэ.',
 
     // Stats
     'statsLabel.km': 'Километр',
@@ -123,27 +127,27 @@ export const translations: Record<Locale, Record<string, string>> = {
     'statsSubLabel.reach': 'дэлхийн үзэгчид',
 
     // Actions
-    'actions.title': 'Үйл ажиллагааны 3 тулгуур',
+    'actions.title': 'Гурван бүтэц, нэг маршрут.',
     'actions.motion.title': 'Desert Motion',
-    'actions.motion.subtitle': 'Тэсвэрийн спортын олон улсын экспедиц',
+    'actions.motion.subtitle': 'Тэсвэрийн экспедиц — дэлхийн анхааралыг татах харагдах хөдөлгүүр.',
     'actions.motion.desc':
-      'Дэлхийн аварга Б.Буджаргалын манлайлсан 120 хоногийн экспедиц нь Евразийн цөлжсөн бүс нутгийн 7 улсаар дамжин 12 мянган километр зам туулна. Энэхүү маршрут нь хүний тэсвэр, байгалийн хатуу нөхцөл, хил дамнасан холбоо болон Монголын санаачилгын далайцыг илэрхийлнэ.',
+      'Дэлхийн аварга Б.Буджаргалын манлайлсан 120 хоногийн тэсвэрийн экспедиц Евразийн хуурай газраар 12,000 км зам туулна. Motion бол хүмүүс хамгийн түрүүнд хардаг бүтэц — хатуу газар нутаг дээрх хүний тэсвэр хатуужил, бодит цаг хугацаанд дамжуулагдана.',
     'actions.motion.tag':
-      'Төслийн хамгийн өндөр харагдацтай, олон нийтийн анхаарал татах гол хөдөлгөгч хэсэг. Монголын санаачилгыг бодит замнал, үйлдлээр илэрхийлнэ.',
+      'Брэнд нь гурван хоорондоо уялдсан бүтэц дээр тулгуурладаг. Тус бүр өөр гэрийн нэр, үүрэг, өнгөн тодотголтой — гэвч нэг маршрут, нэг тэмээ, нэг дуу хоолойг хуваалцана.',
     'actions.motion.cta': 'Экспедицийг дагах',
     'actions.science.title': 'Desert Science',
-    'actions.science.subtitle': 'Шинжлэх ухаанд суурилсан хамтарсан судалгаа',
+    'actions.science.subtitle': 'Маршрутын дагуух хамтарсан судалгаа — өгүүллэгт жин нэмдэг нотолгоо.',
     'actions.science.desc':
-      'Маршрутын дагуу хэрэгжих байгаль орчин–нийгэм–эдийн засгийн интеграл судалгаа нь цөлжилт, хуурайшилт, амьжиргаа, бүс нутгийн сорилт, хамтын ажиллагааны боломжийг шинжлэх ухааны үндэслэлтэйгээр тодорхойлно.',
+      'Маршрутын дагуу байгаль орчин–нийгэм–эдийн засгийн интеграл судалгаа газрын доройтол, хуурайшилт, амьжиргаа, бүс нутгийн хамтын ажиллагааг шинжлэх ухааны үндэслэлтэйгээр судална. Үр дүн нь COP17-д зориулсан бодлогын материал болон шинжлэх ухаанд суурилсан зөвлөмж болно.',
     'actions.science.tag':
-      'Үр дүн нь бодлогын агуулга, шинжлэх ухаанд суурилсан зөвлөмж, COP17-ын үеэр ашиглах үнэ цэнтэй материал болно.',
+      'Тоо баримт нь брэндийн нуруу нугас: тодорхой, давтагдах, иш татах боломжтой.',
     'actions.science.cta': 'Судалгааг судлах',
     'actions.voice.title': 'Desert Voice',
-    'actions.voice.subtitle': 'Баримтат кино, дижитал өгүүлэмж, олон улсын контент',
+    'actions.voice.subtitle': 'Кино, фото, өдөр тутмын өгүүлэмж — дэлхийд хүргэх суваг.',
     'actions.voice.desc':
-      'Экспедицийн замнал, бодит түүх, хүмүүсийн амьдрал, байгаль орчны өөрчлөлт, хамтын ажиллагааны утга агуулгыг баримтат кино, фото төсөл, өдөр тутмын сошиал контент, тусгай медиа өгүүлэмжээр олон улсад түгээнэ.',
+      'Хоёр бүтэн хэмжээний баримтат кино, фото төсөл, өдөр тутмын сошиал контент болон тусгай медиа маршрутыг амьд түүх болгоно. Voice бол брэндийн хамгийн чанга, хамгийн олон нийтэд нээлттэй гадаргуу — хөдөлгөөн ба шинжлэх ухаан нь хүмүүсийн сэтгэлд хүрэх зүйл болдог газар.',
     'actions.voice.tag':
-      'Төслийн олон улсын харагдац, брэнд өгүүлэмж, нийгмийн нөлөөлөл, медиа үнэ цэнийг бүрдүүлэх үндсэн платформ болно.',
+      'Брэнд нь асар том, хийсвэр хямралыг хүний нүдэнд харагдах, үйлдлийн сэдэл болохуйц зүйл болгоход оршино. Энэ нь алдагдлын кампанит ажил биш. Асуудал руу гүйх дуудлага юм.',
     'actions.voice.cta': 'Трейлер үзэх',
 
     // Team

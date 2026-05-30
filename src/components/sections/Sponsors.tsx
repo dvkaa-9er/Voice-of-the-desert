@@ -401,21 +401,6 @@ export default function Sponsors() {
             </div>
           </motion.div>
 
-          {/* Seedlings photo */}
-          <div className="relative w-full h-44 rounded-2xl overflow-hidden mb-8 border border-white/8">
-            <img
-              src="/vod-assets/page-19.jpg"
-              alt="Planting seedlings"
-              className="absolute inset-0 w-full h-full object-cover object-[50%_20%]"
-              style={{ filter: 'brightness(0.45) saturate(1.2)' }}
-            />
-            <div className="absolute inset-0 flex items-center justify-center">
-              <p className="text-white/70 text-xs font-semibold tracking-[0.4em] uppercase">
-                {locale === 'mn' ? 'Тарих · Дэмжих · Өөрчлөх' : 'Plant · Support · Change'}
-              </p>
-            </div>
-          </div>
-
           <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-5">
             {TIERS.map((tier, i) => (
               <TierCard key={tier.label} tier={tier} index={i} inView={tiersInView} />

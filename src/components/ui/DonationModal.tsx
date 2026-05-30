@@ -90,10 +90,11 @@ export default function DonationModal({ open, onClose }: DonationModalProps) {
                       <button
                         key={amount}
                         onClick={() => setSelected(amount)}
+                        style={selected === amount ? { background: '#E03D1E' } : undefined}
                         className={`px-4 py-2 rounded-xl font-bold text-sm border transition-all duration-200 ${
                           selected === amount
-                            ? 'bg-gold text-obsidian border-gold shadow-lg shadow-gold/30'
-                            : 'bg-white/5 text-white/70 border-white/10 hover:border-gold/40'
+                            ? 'text-white border-transparent shadow-lg'
+                            : 'bg-white/5 text-white/70 border-white/10 hover:border-vermilion/40'
                         }`}
                       >
                         ${amount}
@@ -113,7 +114,8 @@ export default function DonationModal({ open, onClose }: DonationModalProps) {
                     onClick={handlePlant}
                     whileHover={{ scale: 1.03 }}
                     whileTap={{ scale: 0.97 }}
-                    className="w-full py-4 rounded-xl font-black text-lg text-obsidian bg-gradient-to-r from-gold via-orange to-red shadow-lg hover:shadow-gold/30 transition-shadow"
+                    className="w-full py-4 rounded-xl font-black text-lg text-white shadow-lg transition-shadow"
+                    style={{ background: '#E03D1E' }}
                   >
                     {t('donate.cta')} — ${selected}
                   </motion.button>

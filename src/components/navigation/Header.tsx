@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useLanguage } from '@/components/providers/LanguageProvider'
 import { useScroll } from '@/components/providers/ScrollProvider'
@@ -48,21 +49,28 @@ export default function Header({ onDonateClick }: { onDonateClick: () => void })
 
           {/* Desktop nav */}
           <nav className="hidden lg:flex items-center gap-6">
-            {NAV_LINKS.map(({ key, id }) => {
-              const active = id !== 'hero' && typeof window !== 'undefined'
-                ? document.getElementById(id)?.getBoundingClientRect().top !== undefined
-                : false
-              return (
-                <button
-                  key={key}
-                  onClick={() => scrollTo(id)}
-                  className="group relative text-white/55 hover:text-white text-[11px] font-semibold tracking-[0.25em] uppercase transition-colors duration-200"
-                >
-                  {t(`nav.${key}`)}
-                  <span className="absolute -bottom-1 left-0 w-0 h-px bg-gold group-hover:w-full transition-all duration-300" />
-                </button>
-              )
-            })}
+            {NAV_LINKS.map(({ key, id }) => (
+              <button
+                key={key}
+                onClick={() => scrollTo(id)}
+                className="group relative text-white/55 hover:text-white text-[11px] font-semibold tracking-[0.25em] uppercase transition-colors duration-200"
+              >
+                {t(`nav.${key}`)}
+                <span className="absolute -bottom-1 left-0 w-0 h-px bg-gold group-hover:w-full transition-all duration-300" />
+              </button>
+            ))}
+            <Link
+              href="/shop"
+              className="group relative text-[11px] font-semibold tracking-[0.25em] uppercase transition-colors duration-200 flex items-center gap-1.5"
+            >
+              <span className="text-gold/80 group-hover:text-gold transition-colors duration-200">
+                {t('nav.shop')}
+              </span>
+              <span className="text-[8px] font-black tracking-widest text-orange/70 bg-orange/10 rounded-full px-1.5 py-0.5 leading-none">
+                {t('nav.shopBadge')}
+              </span>
+              <span className="absolute -bottom-1 left-0 w-0 h-px bg-gold group-hover:w-full transition-all duration-300" />
+            </Link>
           </nav>
 
           {/* Right side */}
@@ -82,15 +90,9 @@ export default function Header({ onDonateClick }: { onDonateClick: () => void })
               onClick={onDonateClick}
               whileHover={{ scale: 1.04 }}
               whileTap={{ scale: 0.96 }}
-              className="relative overflow-hidden rounded-full px-5 py-2.5 text-[11px] font-black tracking-widest uppercase text-[#0A0A0F]"
-              style={{ background: 'linear-gradient(135deg,#D4AF37,#FF6B35)' }}
+              className="relative overflow-hidden rounded-full px-5 py-2.5 text-[11px] font-black tracking-widest uppercase text-white"
+              style={{ background: '#E03D1E' }}
             >
-              <motion.div
-                className="absolute inset-0 opacity-0 hover:opacity-100"
-                style={{ background: 'linear-gradient(135deg,#FF6B35,#D4AF37)' }}
-                whileHover={{ opacity: 1 }}
-                transition={{ duration: 0.3 }}
-              />
               <span className="relative z-10">{t('nav.donate')}</span>
             </motion.button>
 
@@ -143,6 +145,22 @@ export default function Header({ onDonateClick }: { onDonateClick: () => void })
                 {t(`nav.${key}`)}
               </motion.button>
             ))}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: NAV_LINKS.length * 0.07 }}
+            >
+              <Link
+                href="/shop"
+                onClick={() => setMenuOpen(false)}
+                className="flex items-center gap-3 text-gold font-black text-4xl tracking-tight py-3 hover:text-gold/80 transition-colors"
+              >
+                {t('nav.shop')}
+                <span className="text-[11px] font-black tracking-widest text-orange/80 bg-orange/10 rounded-full px-2 py-1 leading-none self-center">
+                  {t('nav.shopBadge')}
+                </span>
+              </Link>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

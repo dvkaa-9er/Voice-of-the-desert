@@ -10,7 +10,7 @@ const PILLARS = [
     index: '01',
     icon: '🏃',
     word: 'MOTION',
-    color: '#D4AF37',
+    color: '#E03D1E',   // Brand: Vermilion — highest visibility
     colorB: '#FF6B35',
     stats: [
       { valueMn: 'Тэсвэр', valueEn: 'Endurance',    descMn: 'Хүний тэсвэрийн хязгаар',        descEn: 'Human endurance limits' },
@@ -23,8 +23,8 @@ const PILLARS = [
     index: '02',
     icon: '🔬',
     word: 'SCIENCE',
-    color: '#2D7A4F',
-    colorB: '#4CAF50',
+    color: '#1E5855',   // Brand: Basin Teal — rigour & depth
+    colorB: '#2D9C8C',
     stats: [
       { valueMn: 'Байгаль', valueEn: 'Environment', descMn: 'Байгаль орчны судалгаа',         descEn: 'Environmental research' },
       { valueMn: 'Нийгэм',  valueEn: 'Society',     descMn: 'Нийгмийн нөлөөллийн судалгаа',  descEn: 'Social impact research' },
@@ -36,8 +36,8 @@ const PILLARS = [
     index: '03',
     icon: '🎬',
     word: 'VOICE',
-    color: '#E34234',
-    colorB: '#FF6B35',
+    color: '#C8841A',   // Brand: Ochre — warmth & story
+    colorB: '#E8A030',
     stats: [
       { valueMn: 'Кино',    valueEn: 'Film',        descMn: '4K баримтат кино',               descEn: '4K documentary' },
       { valueMn: 'Фото',    valueEn: 'Photo',       descMn: 'Олон улсын фото төсөл',          descEn: 'International photo project' },
