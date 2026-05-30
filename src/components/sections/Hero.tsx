@@ -137,7 +137,7 @@ export default function Hero({ onDonateClick }: { onDonateClick: () => void }) {
             onClick={onDonateClick}
             whileHover={{ scale: 1.04 }}
             whileTap={{ scale: 0.97 }}
-            className="relative px-8 py-3.5 font-black text-sm tracking-widest uppercase text-[#0A0A0F] rounded-full overflow-hidden"
+            className="relative px-8 py-3.5 font-black text-sm tracking-widest uppercase text-white rounded-full overflow-hidden"
             style={{ background: '#E03D1E' }}
           >
             {t('nav.donate')}
