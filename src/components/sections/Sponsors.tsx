@@ -299,6 +299,20 @@ function TierCard({ tier, index, inView }: { tier: Tier; index: number; inView: 
             </li>
           ))}
         </ul>
+
+        {/* CTA */}
+        <button
+          onClick={() => {
+            window.dispatchEvent(new CustomEvent('sponsorship-inquiry', {
+              detail: { tier: locale === 'mn' ? tier.label : tier.labelEn }
+            }))
+            document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
+          }}
+          className="w-full mt-2 py-3 rounded-xl text-[11px] font-black tracking-[0.25em] uppercase transition-all duration-200 hover:opacity-90"
+          style={{ background: tier.color + '18', color: tier.color, border: `1px solid ${tier.color}40` }}
+        >
+          {locale === 'mn' ? 'Холбоо барих →' : 'Get in touch →'}
+        </button>
       </div>
     </motion.div>
   )

@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { useLanguage } from '@/components/providers/LanguageProvider'
 
@@ -13,6 +13,19 @@ export default function Contact() {
   const [error, setError]     = useState('')
   const [form, setForm]       = useState({ name: '', email: '', message: '' })
   const [trap, setTrap]       = useState('')  // honeypot — must stay empty
+
+  // Pre-fill message when user clicks a sponsorship tier card
+  useEffect(() => {
+    const handler = (e: Event) => {
+      const { tier } = (e as CustomEvent<{ tier: string }>).detail
+      setForm(f => ({
+        ...f,
+        message: `I am interested in the ${tier} sponsorship package and would like to learn more.`,
+      }))
+    }
+    window.addEventListener('sponsorship-inquiry', handler)
+    return () => window.removeEventListener('sponsorship-inquiry', handler)
+  }, [])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
