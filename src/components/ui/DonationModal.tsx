@@ -215,14 +215,24 @@ export default function DonationModal({ open, onClose }: DonationModalProps) {
                           {isMn ? ' тарина' : ' planted in degraded zones'}
                         </p>
                       </div>
-                      <motion.button
+                      {/* PayPal QR code */}
+                  <div className="flex flex-col items-center gap-2">
+                    <p className="text-white/35 text-[10px] uppercase tracking-widest">
+                      {isMn ? 'QR уншуулах эсвэл товч дарах' : 'Scan QR or click below'}
+                    </p>
+                    <div className="bg-white rounded-xl p-2.5">
+                      <img src="/paypal-qr.png" alt="PayPal Donate QR" className="w-36 h-36" />
+                    </div>
+                  </div>
+
+                  <motion.button
                         onClick={handlePayPal}
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.97 }}
                         className="w-full py-3.5 rounded-xl font-black text-base text-white"
                         style={{ background: '#003087' }}
                       >
-                        {isMn ? `PayPal-аар хандивлах — $${ppAmount}` : `Donate with PayPal — $${ppAmount}`}
+                        {isMn ? 'PayPal хуудас нээх' : 'Open PayPal Donate Page'}
                       </motion.button>
                     </div>
                   )}
