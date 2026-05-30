@@ -158,31 +158,27 @@ export default function Loader({ onDone }: LoaderProps) {
             />
           </div>
 
-          {/* Scramble title */}
-          <AnimatePresence>
-            {titleReady && (
-              <motion.div
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="text-center"
-                style={{ width: 'clamp(200px, 42vmin, 280px)' }}
-              >
-                <div className="text-white/50 tracking-[0.6em] uppercase mb-2"
-                     style={{ fontSize: 'clamp(9px, 1.8vmin, 13px)' }}>
-                  {line1}
-                </div>
-                <div className="text-white font-black tracking-widest"
-                     style={{ fontSize: 'clamp(28px, 8vmin, 48px)' }}>
-                  {line2}
-                </div>
-                <div className="text-vermilion/60 tracking-[0.5em] uppercase mt-3"
-                     style={{ fontSize: 'clamp(8px, 1.6vmin, 11px)' }}>
-                  UNCCD COP17 Initiative
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
+          {/* Scramble title — always rendered so layout height never shifts.
+              Opacity transitions from 0→1; invisible placeholders hold space. */}
+          <motion.div
+            animate={{ opacity: titleReady ? 1 : 0 }}
+            transition={{ duration: 0.5 }}
+            className="text-center"
+            style={{ width: 'clamp(200px, 42vmin, 280px)' }}
+          >
+            <div className="text-white/50 tracking-[0.6em] uppercase mb-2"
+                 style={{ fontSize: 'clamp(9px, 1.8vmin, 13px)' }}>
+              {line1 || ' '}
+            </div>
+            <div className="text-white font-black tracking-widest"
+                 style={{ fontSize: 'clamp(28px, 8vmin, 48px)' }}>
+              {line2 || ' '}
+            </div>
+            <div className="text-vermilion/60 tracking-[0.5em] uppercase mt-3"
+                 style={{ fontSize: 'clamp(8px, 1.6vmin, 11px)' }}>
+              UNCCD COP17 Initiative
+            </div>
+          </motion.div>
         </motion.div>
       ) : null}
     </AnimatePresence>
