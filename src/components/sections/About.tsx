@@ -4,7 +4,15 @@ import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { useLanguage } from '@/components/providers/LanguageProvider'
 
-const COUNTRIES = ['Mongolia', 'China', 'Kazakhstan', 'Kyrgyzstan', 'Tajikistan', 'Uzbekistan', 'Russia']
+const COUNTRIES = [
+  { name: 'Mongolia',   flag: '🇲🇳' },
+  { name: 'China',      flag: '🇨🇳' },
+  { name: 'Kazakhstan', flag: '🇰🇿' },
+  { name: 'Kyrgyzstan', flag: '🇰🇬' },
+  { name: 'Tajikistan', flag: '🇹🇯' },
+  { name: 'Uzbekistan', flag: '🇺🇿' },
+  { name: 'Russia',     flag: '🇷🇺' },
+]
 
 const WHY_POINTS = [
   {
@@ -147,15 +155,16 @@ export default function About() {
             {locale === 'mn' ? 'Маршрутын улсууд' : 'Countries on the route'}
           </p>
           <div className="flex flex-wrap gap-2">
-            {COUNTRIES.map((c, i) => (
+            {COUNTRIES.map(({ name, flag }, i) => (
               <motion.span
-                key={c}
+                key={name}
                 initial={{ opacity: 0, scale: 0.85 }}
                 animate={inView ? { opacity: 1, scale: 1 } : {}}
                 transition={{ delay: 0.45 + i * 0.05, duration: 0.4 }}
-                className="px-3 py-1.5 rounded-full text-xs font-semibold border border-white/12 text-white/65 bg-white/[0.04] hover:border-vermilion/30 hover:text-white/85 transition-colors"
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold border border-white/12 text-white/65 bg-white/[0.04] hover:border-vermilion/30 hover:text-white/85 transition-colors"
               >
-                {c}
+                <span className="text-base leading-none">{flag}</span>
+                {name}
               </motion.span>
             ))}
           </div>
