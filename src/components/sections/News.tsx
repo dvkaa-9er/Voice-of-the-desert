@@ -132,9 +132,10 @@ export default function News() {
                     <button
                       onClick={() => shareToInstagram({ title, excerpt, date: item.date, category: label, color })}
                       title={isMn ? 'Instagram story-д хуваалцах' : 'Share as Instagram Story'}
-                      className="flex items-center gap-1 text-white/20 hover:text-white/60 transition-colors duration-200 text-[9px] font-semibold tracking-wide"
+                      className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border border-white/10 text-white/40 hover:text-white/80 hover:border-white/25 hover:bg-white/5 transition-all duration-200 text-[9px] font-black tracking-widest uppercase"
                     >
                       <InstagramIcon />
+                      <span>{isMn ? 'Story' : 'Story'}</span>
                     </button>
                   </div>
                 </div>
@@ -175,77 +176,151 @@ interface ShareArgs {
 }
 
 function shareToInstagram({ title, excerpt, date, category, color }: ShareArgs) {
-  // Generate a canvas-based story image and trigger native share
   const canvas = document.createElement('canvas')
   canvas.width  = 1080
   canvas.height = 1920
   const ctx = canvas.getContext('2d')!
 
-  // Background
-  ctx.fillStyle = '#050508'
+  const VERMILION = '#E03D1E'
+  const BONE      = '#EDE8DC'
+  const INK       = '#050508'
+
+  // ── Background ──────────────────────────────────────────────────────────────
+  ctx.fillStyle = INK
   ctx.fillRect(0, 0, 1080, 1920)
 
-  // Radial glow
-  const grd = ctx.createRadialGradient(540, 960, 0, 540, 960, 900)
-  grd.addColorStop(0, color + '22')
-  grd.addColorStop(1, 'transparent')
-  ctx.fillStyle = grd
+  // Atmosphere: faint radial glow centred on content
+  const atmos = ctx.createRadialGradient(540, 800, 0, 540, 800, 850)
+  atmos.addColorStop(0, color + '1a')
+  atmos.addColorStop(1, 'transparent')
+  ctx.fillStyle = atmos
   ctx.fillRect(0, 0, 1080, 1920)
 
-  // Top accent line
-  ctx.fillStyle = color
-  ctx.fillRect(80, 200, 920, 4)
+  // ── Dune silhouettes (bottom) ───────────────────────────────────────────────
+  ctx.fillStyle = color + '0e'
+  ctx.beginPath()
+  ctx.moveTo(0, 1920)
+  ctx.bezierCurveTo(220, 1680, 460, 1600, 540, 1640)
+  ctx.bezierCurveTo(640, 1680, 860, 1580, 1080, 1650)
+  ctx.lineTo(1080, 1920)
+  ctx.closePath()
+  ctx.fill()
 
-  // Category pill
-  ctx.fillStyle = color + '30'
-  roundRect(ctx, 80, 220, 200, 52, 26)
-  ctx.fillStyle = color
-  ctx.font = 'bold 22px system-ui'
+  ctx.fillStyle = color + '07'
+  ctx.beginPath()
+  ctx.moveTo(0, 1920)
+  ctx.bezierCurveTo(160, 1760, 360, 1720, 480, 1760)
+  ctx.bezierCurveTo(620, 1800, 820, 1730, 1080, 1800)
+  ctx.lineTo(1080, 1920)
+  ctx.closePath()
+  ctx.fill()
+
+  // ── Decorative bars (outside safe zone — purely visual) ────────────────────
+  ctx.fillStyle = VERMILION
+  ctx.fillRect(0, 0, 1080, 7)
+  ctx.fillRect(0, 1913, 1080, 7)
+
+  // ── SAFE ZONE: Y 250 – 1670 ─────────────────────────────────────────────────
+
+  // ── Brand header (Y 265 – 455) ──────────────────────────────────────────────
+  ctx.fillStyle = 'rgba(237,232,220,0.35)'
+  ctx.font = 'bold 19px monospace'
   ctx.textAlign = 'left'
-  ctx.fillText(category.toUpperCase(), 116, 252)
+  ctx.fillText('SPORT · SCIENCE · MEDIA', 80, 285)
 
-  // Date
-  ctx.fillStyle = 'rgba(255,255,255,0.4)'
-  ctx.font = '24px system-ui'
+  ctx.fillStyle = BONE
+  ctx.font = 'bold 58px Georgia, serif'
+  ctx.fillText('VOICE OF THE DESERT', 80, 370)
+
+  ctx.fillStyle = 'rgba(237,232,220,0.42)'
+  ctx.font = '24px monospace'
+  ctx.fillText('Run the route. Read the land. Raise the voice.', 80, 412)
+
+  ctx.fillStyle = VERMILION
+  ctx.fillRect(80, 438, 920, 2)
+
+  // ── News meta row (Y 460 – 520) ─────────────────────────────────────────────
+  ctx.fillStyle = color + '28'
+  roundRect(ctx, 80, 462, 230, 50, 25)
+  ctx.fillStyle = color
+  ctx.font = 'bold 20px monospace'
+  ctx.textAlign = 'left'
+  ctx.fillText(category.toUpperCase(), 116, 493)
+
+  ctx.fillStyle = 'rgba(237,232,220,0.35)'
+  ctx.font = '22px monospace'
   ctx.textAlign = 'right'
-  ctx.fillText(new Date(date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }), 1000, 252)
+  ctx.fillText(
+    new Date(date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }),
+    1000, 493,
+  )
 
-  // Title
-  ctx.fillStyle = '#ffffff'
-  ctx.font = 'bold 62px Georgia, serif'
+  // ── News title (Y 570 – 810) ─────────────────────────────────────────────────
+  ctx.fillStyle = BONE
+  ctx.font = 'bold 64px Georgia, serif'
   ctx.textAlign = 'left'
-  wrapText(ctx, title, 80, 360, 920, 80)
+  wrapText(ctx, title, 80, 600, 920, 82)
 
-  // Divider
-  ctx.fillStyle = color + '40'
-  ctx.fillRect(80, 640, 920, 1)
-
-  // Excerpt
-  ctx.fillStyle = 'rgba(255,255,255,0.6)'
-  ctx.font = '36px system-ui'
-  wrapText(ctx, excerpt, 80, 700, 920, 52)
-
-  // Footer — branding
-  ctx.fillStyle = 'rgba(255,255,255,0.2)'
-  ctx.font = 'bold 28px system-ui'
-  ctx.fillText('VOICE OF THE DESERT', 80, 1800)
   ctx.fillStyle = color
-  ctx.font = '24px system-ui'
-  ctx.fillText('voiceofdesert.org', 80, 1840)
+  ctx.fillRect(80, 820, 100, 3)
 
+  // ── Excerpt (Y 850 – 1040) ───────────────────────────────────────────────────
+  ctx.fillStyle = 'rgba(237,232,220,0.60)'
+  ctx.font = '34px Georgia, serif'
+  wrapText(ctx, excerpt, 80, 872, 920, 52)
+
+  // ── Divider ──────────────────────────────────────────────────────────────────
+  ctx.fillStyle = 'rgba(237,232,220,0.07)'
+  ctx.fillRect(80, 1080, 920, 1)
+
+  // ── Mission block (Y 1100 – 1420) ────────────────────────────────────────────
+  ctx.fillStyle = VERMILION
+  ctx.font = 'bold 20px monospace'
+  ctx.textAlign = 'left'
+  ctx.fillText('TOGETHER AGAINST DESERTIFICATION', 80, 1124)
+
+  ctx.fillStyle = BONE
+  ctx.font = 'bold 80px Georgia, serif'
+  ctx.fillText('Protect', 80, 1224)
+  ctx.fillText('our deserts.', 80, 1316)
+
+  ctx.fillStyle = VERMILION + 'aa'
+  ctx.fillRect(80, 1336, 460, 3)
+
+  ctx.fillStyle = color + '20'
+  roundRect(ctx, 80, 1360, 360, 48, 8)
+  ctx.fillStyle = color
+  ctx.font = 'bold 18px monospace'
+  ctx.textAlign = 'left'
+  ctx.fillText('UNCCD COP17 INITIATIVE', 106, 1391)
+
+  // ── Footer CTA (Y 1470 – 1660) — top of bottom safe zone ────────────────────
+  ctx.fillStyle = VERMILION
+  ctx.fillRect(80, 1470, 920, 2)
+
+  ctx.fillStyle = BONE
+  ctx.font = 'bold 30px monospace'
+  ctx.textAlign = 'left'
+  ctx.fillText('JOIN THE MISSION  →', 80, 1530)
+
+  ctx.fillStyle = VERMILION
+  ctx.font = 'bold 30px monospace'
+  ctx.fillText('voiceofdesert.org', 80, 1580)
+
+  ctx.fillStyle = 'rgba(237,232,220,0.25)'
+  ctx.font = '20px monospace'
+  ctx.fillText('#VoiceOfTheDesert  #StopDesertification  #UNCCD', 80, 1630)
+
+  // ── Export ──────────────────────────────────────────────────────────────────
   canvas.toBlob(async (blob) => {
     if (!blob) return
     const file = new File([blob], 'vod-story.png', { type: 'image/png' })
-
-    // Web Share API with files (supported on mobile browsers)
     if (navigator.canShare?.({ files: [file] })) {
       try {
         await navigator.share({ files: [file], title: 'Voice of the Desert' })
         return
-      } catch { /* user cancelled or unsupported */ }
+      } catch { /* user cancelled */ }
     }
-
-    // Fallback: download the image
     const url = URL.createObjectURL(blob)
     const a   = document.createElement('a')
     a.href     = url
