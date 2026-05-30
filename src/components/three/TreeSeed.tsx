@@ -1,8 +1,8 @@
 'use client'
 
-import { useRef, useState, useEffect } from 'react'
+import { useRef } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
-import { Sparkles, Environment } from '@react-three/drei'
+import { Sparkles } from '@react-three/drei'
 import * as THREE from 'three'
 
 function GrowingTree({ growing }: { growing: boolean }) {
@@ -79,8 +79,8 @@ export default function TreeSeed({ growing, treeCount }: TreeSeedProps) {
         <ambientLight intensity={0.6} />
         <directionalLight position={[3, 5, 3]} intensity={1.2} color="#D4AF37" />
         <pointLight position={[-2, 2, -2]} color="#2D7A4F" intensity={0.8} />
+        <pointLight position={[0, 3, 2]} color="#E03D1E" intensity={0.5} />
         <GrowingTree growing={growing} />
-        <Environment preset="forest" />
       </Canvas>
       <div className="absolute bottom-4 left-0 right-0 text-center">
         <span className="text-green-400 font-bold text-2xl">{treeCount.toLocaleString()}</span>

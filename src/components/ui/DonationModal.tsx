@@ -1,10 +1,21 @@
 'use client'
 
-import { useState, useEffect, useRef, lazy, Suspense } from 'react'
+import { useState, useEffect, useRef, lazy, Suspense, Component, type ReactNode } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useLanguage } from '@/components/providers/LanguageProvider'
 
 const TreeSeed = lazy(() => import('@/components/three/TreeSeed'))
+
+// Prevents a WebGL/R3F crash from taking down the whole modal
+class CanvasBoundary extends Component<{ children: ReactNode }, { failed: boolean }> {
+  state = { failed: false }
+  static getDerivedStateFromError() { return { failed: true } }
+  render() {
+    return this.state.failed
+      ? <div className="w-full h-full flex items-center justify-center text-white/20 text-xs">🌵</div>
+      : this.props.children
+  }
+}
 
 // USD amounts for PayPal
 const PAYPAL_AMOUNTS = [5, 10, 25, 50, 100]
@@ -129,9 +140,11 @@ export default function DonationModal({ open, onClose }: DonationModalProps) {
 
             {/* 3D Tree */}
             <div className="h-44 bg-gradient-to-b from-obsidian to-slate relative">
-              <Suspense fallback={<div className="w-full h-full flex items-center justify-center text-vermilion/40 text-sm">Loading…</div>}>
-                <TreeSeed growing={growing} treeCount={treeCount} />
-              </Suspense>
+              <CanvasBoundary>
+                <Suspense fallback={<div className="w-full h-full flex items-center justify-center text-vermilion/40 text-sm">Loading…</div>}>
+                  <TreeSeed growing={growing} treeCount={treeCount} />
+                </Suspense>
+              </CanvasBoundary>
               <div className="absolute bottom-3 right-4 text-right">
                 <p className="text-white/40 text-xs">{t('donate.impact')}</p>
               </div>
