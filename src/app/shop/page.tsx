@@ -211,11 +211,14 @@ function ShopContent() {
       </main>
 
       {/* Footer line */}
-      <footer className="relative z-10 border-t border-white/6 px-6 py-4 text-center">
+      <footer className="relative z-10 border-t border-white/6 px-6 py-4 text-center space-y-1">
         <p className="text-[10px] text-white/20 tracking-[0.2em] uppercase">
           {isMn
             ? '© 2026 Цөлийн дуу хоолой · Бүх эрх хамгаалагдсан'
             : '© 2026 Voice of the Desert · All rights reserved'}
+        </p>
+        <p className="text-[9px] text-white/15 tracking-[0.3em] uppercase">
+          Powered by <span className="text-white/25 font-semibold">UGC Mongolia®</span>
         </p>
       </footer>
     </div>

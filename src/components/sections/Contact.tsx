@@ -192,14 +192,19 @@ export default function Contact() {
         </motion.div>
 
         {/* Footer */}
-        <motion.p
+        <motion.div
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : {}}
           transition={{ delay: 0.7 }}
-          className="text-center text-white/20 text-xs mt-12 tracking-wider"
+          className="mt-12 space-y-2 text-center"
         >
-          {t('contact.rights')}
-        </motion.p>
+          <p className="text-white/20 text-xs tracking-wider">
+            {t('contact.rights')}
+          </p>
+          <p className="text-white/15 text-[10px] tracking-[0.3em] uppercase">
+            Powered by <span className="text-white/30 font-semibold">UGC Mongolia®</span>
+          </p>
+        </motion.div>
       </div>
     </section>
   )
