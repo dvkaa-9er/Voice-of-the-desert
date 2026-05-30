@@ -141,20 +141,20 @@ export default function Contact() {
           className="mt-10 rounded-2xl border border-white/8 bg-white/[0.025] p-6 space-y-4"
         >
           <div className="flex items-center gap-3">
-            <div className="w-6 h-0.5 bg-gold/50" />
-            <span className="text-gold/60 text-[10px] font-black tracking-[0.45em] uppercase">
+            <div className="w-6 h-0.5 bg-vermilion/50" />
+            <span className="text-vermilion/60 text-[10px] font-black tracking-[0.45em] uppercase">
               Voice of the Desert
             </span>
           </div>
 
           <div className="space-y-3">
             <a
-              href="mailto:operation.vod@gmail.com"
+              href="mailto:contact@voiceofdesert.org"
               className="flex items-center gap-4 group"
             >
               <span className="text-white/25 text-xs w-4">@</span>
-              <span className="text-white/60 text-sm group-hover:text-gold transition-colors duration-200">
-                operation.vod@gmail.com
+              <span className="text-white/60 text-sm group-hover:text-vermilion transition-colors duration-200">
+                contact@voiceofdesert.org
               </span>
             </a>
             <a
@@ -162,7 +162,7 @@ export default function Contact() {
               className="flex items-center gap-4 group"
             >
               <span className="text-white/25 text-xs w-4">↗</span>
-              <span className="text-white/60 text-sm group-hover:text-gold transition-colors duration-200">
+              <span className="text-white/60 text-sm group-hover:text-vermilion transition-colors duration-200">
                 +976 8994 2918
               </span>
             </a>
@@ -171,7 +171,7 @@ export default function Contact() {
               className="flex items-center gap-4 group"
             >
               <span className="text-white/25 text-xs w-4">↗</span>
-              <span className="text-white/60 text-sm group-hover:text-gold transition-colors duration-200">
+              <span className="text-white/60 text-sm group-hover:text-vermilion transition-colors duration-200">
                 +976 9323 4444
               </span>
             </a>
