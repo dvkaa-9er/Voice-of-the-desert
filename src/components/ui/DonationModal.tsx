@@ -51,11 +51,10 @@ export default function DonationModal({ open, onClose }: DonationModalProps) {
     }
   }, [open])
 
-  // PayPal — open donate page in new tab
+  // PayPal — open hosted donate button in new tab
   function handlePayPal() {
-    const email = process.env.NEXT_PUBLIC_PAYPAL_EMAIL ?? 'operation.vod@gmail.com'
-    const url = `https://www.paypal.com/donate?business=${encodeURIComponent(email)}&amount=${ppAmount}&currency_code=USD&item_name=${encodeURIComponent('Voice of the Desert — Donation')}`
-    window.open(url, '_blank', 'noopener,noreferrer')
+    const buttonId = process.env.NEXT_PUBLIC_PAYPAL_BUTTON_ID ?? 'W4TH5XGD5TVNL'
+    window.open(`https://www.paypal.com/donate/?hosted_button_id=${buttonId}`, '_blank', 'noopener,noreferrer')
     setPpDone(true)
     setGrowing(true)
     setTimeout(() => { setTreeCount(c => c + ppTrees) }, 1200)
