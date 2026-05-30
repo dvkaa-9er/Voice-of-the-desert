@@ -58,7 +58,7 @@ function ShopContent() {
       <header className="relative z-10 flex items-center justify-between px-6 md:px-12 h-16 border-b border-white/6">
         <Link href="/" className="group flex items-center gap-2">
           <img
-            src="/logo.png"
+            src="/voice-of-the-desert-mark.svg"
             alt="Voice of the Desert"
             className="h-10 w-auto opacity-80 group-hover:opacity-100 transition-opacity duration-300"
           />

@@ -41,9 +41,9 @@ export default function Header({ onDonateClick }: { onDonateClick: () => void })
           {/* Logo */}
           <button onClick={() => scrollTo('hero')} className="group flex items-center gap-2">
             <img
-              src="/logo.png"
+              src="/voice-of-the-desert-mark.svg"
               alt="Voice of the Desert"
-              className="h-11 w-auto opacity-90 group-hover:opacity-100 transition-opacity"
+              className="h-10 w-auto opacity-90 group-hover:opacity-100 transition-opacity"
             />
           </button>
 
