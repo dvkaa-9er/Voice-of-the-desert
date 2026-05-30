@@ -142,7 +142,7 @@ export default function Loader({ onDone }: LoaderProps) {
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.8, ease: [0.34, 1.56, 0.64, 1] }}
           >
-            <Canvas camera={{ position: [0, 0, 2.8], fov: 45 }} gl={{ alpha: true }}>
+            <Canvas camera={{ position: [0, 0, 2.5], fov: 45 }} gl={{ alpha: true }}>
               <LoaderGlobe progress={progress} />
             </Canvas>
           </motion.div>
@@ -166,6 +166,7 @@ export default function Loader({ onDone }: LoaderProps) {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
                 className="text-center"
+                style={{ width: 'clamp(200px, 42vmin, 280px)' }}
               >
                 <div className="text-white/50 tracking-[0.6em] uppercase mb-2"
                      style={{ fontSize: 'clamp(9px, 1.8vmin, 13px)' }}>
