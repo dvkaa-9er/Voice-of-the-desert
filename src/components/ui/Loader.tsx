@@ -46,7 +46,7 @@ function LoaderGlobe({ progress }: { progress: number }) {
       <primitive
         object={(() => {
           const geo = new THREE.BufferGeometry().setFromPoints(drawnPts)
-          const mat = new THREE.LineBasicMaterial({ color: '#D4AF37', linewidth: 2 })
+          const mat = new THREE.LineBasicMaterial({ color: '#E03D1E', linewidth: 2 })
           return new THREE.Line(geo, mat)
         })()}
       />
@@ -54,11 +54,11 @@ function LoaderGlobe({ progress }: { progress: number }) {
       {drawnPts.length > 1 && (
         <mesh position={drawnPts[drawnPts.length - 1]}>
           <sphereGeometry args={[0.025, 8, 8]} />
-          <meshStandardMaterial color="#FF6B35" emissive="#FF6B35" emissiveIntensity={3} />
+          <meshStandardMaterial color="#E03D1E" emissive="#E03D1E" emissiveIntensity={3} />
         </mesh>
       )}
       <ambientLight intensity={0.3} />
-      <directionalLight position={[3, 3, 5]} intensity={1.5} color="#D4AF37" />
+      <directionalLight position={[3, 3, 5]} intensity={1.5} color="#E03D1E" />
     </group>
   )
 }
@@ -134,9 +134,10 @@ export default function Loader({ onDone }: LoaderProps) {
           transition={{ duration: 0.9, ease: 'easeInOut' }}
           className="fixed inset-0 z-[999] bg-[#050508] flex flex-col items-center justify-center"
         >
-          {/* Globe canvas */}
+          {/* Globe canvas — square, scales with viewport using vmin */}
           <motion.div
-            className="w-40 h-40 md:w-52 md:h-52 mb-6 md:mb-8"
+            style={{ width: 'clamp(200px, 42vmin, 280px)', height: 'clamp(200px, 42vmin, 280px)' }}
+            className="mb-[4vmin]"
             initial={{ scale: 0.4, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.8, ease: [0.34, 1.56, 0.64, 1] }}
@@ -146,8 +147,11 @@ export default function Loader({ onDone }: LoaderProps) {
             </Canvas>
           </motion.div>
 
-          {/* Route progress bar */}
-          <div className="w-40 md:w-48 h-0.5 bg-white/10 rounded-full overflow-hidden mb-6 md:mb-8">
+          {/* Route progress bar — width matches globe */}
+          <div
+            style={{ width: 'clamp(200px, 42vmin, 280px)' }}
+            className="h-[2px] bg-white/10 rounded-full overflow-hidden mb-[4vmin]"
+          >
             <motion.div
               className="h-full rounded-full bg-gradient-to-r from-vermilion to-ochre"
               style={{ width: `${progress * 100}%` }}
@@ -163,9 +167,16 @@ export default function Loader({ onDone }: LoaderProps) {
                 transition={{ duration: 0.5 }}
                 className="text-center"
               >
-                <div className="text-white/50 text-xs tracking-[0.6em] uppercase mb-2">{line1}</div>
-                <div className="text-white font-black text-3xl md:text-4xl tracking-widest">{line2}</div>
-                <div className="text-gold/60 text-[10px] tracking-[0.5em] uppercase mt-3">
+                <div className="text-white/50 tracking-[0.6em] uppercase mb-2"
+                     style={{ fontSize: 'clamp(9px, 1.8vmin, 13px)' }}>
+                  {line1}
+                </div>
+                <div className="text-white font-black tracking-widest"
+                     style={{ fontSize: 'clamp(28px, 8vmin, 48px)' }}>
+                  {line2}
+                </div>
+                <div className="text-vermilion/60 tracking-[0.5em] uppercase mt-3"
+                     style={{ fontSize: 'clamp(8px, 1.6vmin, 11px)' }}>
                   UNCCD COP17 Initiative
                 </div>
               </motion.div>
