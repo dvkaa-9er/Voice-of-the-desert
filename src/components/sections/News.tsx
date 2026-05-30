@@ -175,7 +175,19 @@ interface ShareArgs {
   color: string
 }
 
-function shareToInstagram({ title, excerpt, date, category, color }: ShareArgs) {
+async function shareToInstagram({ title, excerpt, date, category, color }: ShareArgs) {
+  // Load self-hosted Roboto Bold + Thin into the canvas font registry
+  const [boldFace, thinFace] = [
+    new FontFace('Roboto', 'url(/fonts/Roboto-Bold.ttf)', { weight: '700' }),
+    new FontFace('Roboto', 'url(/fonts/Roboto-Thin.ttf)', { weight: '100' }),
+  ]
+  await Promise.all([boldFace.load(), thinFace.load()])
+  document.fonts.add(boldFace)
+  document.fonts.add(thinFace)
+
+  const BOLD = (size: number) => `700 ${size}px Roboto`
+  const THIN = (size: number) => `100 ${size}px Roboto`
+
   const canvas = document.createElement('canvas')
   canvas.width  = 1080
   canvas.height = 1920
@@ -189,14 +201,13 @@ function shareToInstagram({ title, excerpt, date, category, color }: ShareArgs) 
   ctx.fillStyle = INK
   ctx.fillRect(0, 0, 1080, 1920)
 
-  // Atmosphere: faint radial glow centred on content
   const atmos = ctx.createRadialGradient(540, 800, 0, 540, 800, 850)
   atmos.addColorStop(0, color + '1a')
   atmos.addColorStop(1, 'transparent')
   ctx.fillStyle = atmos
   ctx.fillRect(0, 0, 1080, 1920)
 
-  // ── Dune silhouettes (bottom) ───────────────────────────────────────────────
+  // ── Dune silhouettes ────────────────────────────────────────────────────────
   ctx.fillStyle = color + '0e'
   ctx.beginPath()
   ctx.moveTo(0, 1920)
@@ -215,72 +226,72 @@ function shareToInstagram({ title, excerpt, date, category, color }: ShareArgs) 
   ctx.closePath()
   ctx.fill()
 
-  // ── Decorative bars (outside safe zone — purely visual) ────────────────────
+  // ── Decorative bars ─────────────────────────────────────────────────────────
   ctx.fillStyle = VERMILION
   ctx.fillRect(0, 0, 1080, 7)
   ctx.fillRect(0, 1913, 1080, 7)
 
   // ── SAFE ZONE: Y 250 – 1670 ─────────────────────────────────────────────────
 
-  // ── Brand header (Y 265 – 455) ──────────────────────────────────────────────
+  // ── Brand header ─────────────────────────────────────────────────────────────
   ctx.fillStyle = 'rgba(237,232,220,0.35)'
-  ctx.font = 'bold 19px monospace'
+  ctx.font = THIN(19)
   ctx.textAlign = 'left'
   ctx.fillText('SPORT · SCIENCE · MEDIA', 80, 285)
 
   ctx.fillStyle = BONE
-  ctx.font = 'bold 58px Georgia, serif'
+  ctx.font = BOLD(58)
   ctx.fillText('VOICE OF THE DESERT', 80, 370)
 
   ctx.fillStyle = 'rgba(237,232,220,0.42)'
-  ctx.font = '24px monospace'
+  ctx.font = THIN(24)
   ctx.fillText('Run the route. Read the land. Raise the voice.', 80, 412)
 
   ctx.fillStyle = VERMILION
   ctx.fillRect(80, 438, 920, 2)
 
-  // ── News meta row (Y 460 – 520) ─────────────────────────────────────────────
+  // ── News meta row ────────────────────────────────────────────────────────────
   ctx.fillStyle = color + '28'
   roundRect(ctx, 80, 462, 230, 50, 25)
   ctx.fillStyle = color
-  ctx.font = 'bold 20px monospace'
+  ctx.font = BOLD(20)
   ctx.textAlign = 'left'
   ctx.fillText(category.toUpperCase(), 116, 493)
 
   ctx.fillStyle = 'rgba(237,232,220,0.35)'
-  ctx.font = '22px monospace'
+  ctx.font = THIN(22)
   ctx.textAlign = 'right'
   ctx.fillText(
     new Date(date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }),
     1000, 493,
   )
 
-  // ── News title (Y 570 – 810) ─────────────────────────────────────────────────
+  // ── News title ───────────────────────────────────────────────────────────────
   ctx.fillStyle = BONE
-  ctx.font = 'bold 64px Georgia, serif'
+  ctx.font = BOLD(64)
   ctx.textAlign = 'left'
   wrapText(ctx, title, 80, 600, 920, 82)
 
   ctx.fillStyle = color
   ctx.fillRect(80, 820, 100, 3)
 
-  // ── Excerpt (Y 850 – 1040) ───────────────────────────────────────────────────
+  // ── Excerpt ──────────────────────────────────────────────────────────────────
   ctx.fillStyle = 'rgba(237,232,220,0.60)'
-  ctx.font = '34px Georgia, serif'
+  ctx.font = THIN(34)
   wrapText(ctx, excerpt, 80, 872, 920, 52)
 
   // ── Divider ──────────────────────────────────────────────────────────────────
   ctx.fillStyle = 'rgba(237,232,220,0.07)'
   ctx.fillRect(80, 1080, 920, 1)
 
-  // ── Mission block (Y 1100 – 1420) ────────────────────────────────────────────
+  // ── Mission block ────────────────────────────────────────────────────────────
   ctx.fillStyle = VERMILION
-  ctx.font = 'bold 20px monospace'
+  ctx.font = THIN(20)
   ctx.textAlign = 'left'
   ctx.fillText('TOGETHER AGAINST DESERTIFICATION', 80, 1124)
 
   ctx.fillStyle = BONE
-  ctx.font = 'bold 80px Georgia, serif'
+  ctx.font = BOLD(80)
   ctx.fillText('Protect', 80, 1224)
   ctx.fillText('our deserts.', 80, 1316)
 
@@ -290,28 +301,28 @@ function shareToInstagram({ title, excerpt, date, category, color }: ShareArgs) 
   ctx.fillStyle = color + '20'
   roundRect(ctx, 80, 1360, 360, 48, 8)
   ctx.fillStyle = color
-  ctx.font = 'bold 18px monospace'
+  ctx.font = THIN(18)
   ctx.textAlign = 'left'
   ctx.fillText('UNCCD COP17 INITIATIVE', 106, 1391)
 
-  // ── Footer CTA (Y 1470 – 1660) — top of bottom safe zone ────────────────────
+  // ── Footer CTA ───────────────────────────────────────────────────────────────
   ctx.fillStyle = VERMILION
   ctx.fillRect(80, 1470, 920, 2)
 
   ctx.fillStyle = BONE
-  ctx.font = 'bold 30px monospace'
+  ctx.font = BOLD(30)
   ctx.textAlign = 'left'
   ctx.fillText('JOIN THE MISSION  →', 80, 1530)
 
   ctx.fillStyle = VERMILION
-  ctx.font = 'bold 30px monospace'
+  ctx.font = THIN(30)
   ctx.fillText('voiceofdesert.org', 80, 1580)
 
   ctx.fillStyle = 'rgba(237,232,220,0.25)'
-  ctx.font = '20px monospace'
+  ctx.font = THIN(20)
   ctx.fillText('#VoiceOfTheDesert  #StopDesertification  #UNCCD', 80, 1630)
 
-  // ── Export ──────────────────────────────────────────────────────────────────
+  // ── Export ───────────────────────────────────────────────────────────────────
   canvas.toBlob(async (blob) => {
     if (!blob) return
     const file = new File([blob], 'vod-story.png', { type: 'image/png' })
