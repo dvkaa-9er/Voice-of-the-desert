@@ -16,12 +16,11 @@ class CanvasBoundary extends Component<{ children: ReactNode }, { failed: boolea
   }
 }
 
-const USD_AMOUNTS  = [5, 10, 25, 50, 100]
 const QPAY_AMOUNTS = [10000, 20000, 50000, 100000, 200000]
 const MNT_AMOUNTS  = [10000, 20000, 50000, 100000]
 const MNT_PER_TREE = 17500
 
-type Method   = 'card' | 'paypal' | 'qpay' | 'apps' | 'bank'
+type Method   = 'paypal' | 'qpay' | 'apps' | 'bank'
 type QPayStep = 'idle' | 'loading' | 'qr' | 'paid'
 interface QRData { invoice_id: string; qr_image: string; urls: { name: string; link: string; logo: string }[] }
 interface Props  { open: boolean; onClose: () => void }
@@ -40,26 +39,24 @@ const BANK_ACCOUNTS = [
 ]
 
 const TABS: { id: Method; labelEn: string; labelMn: string; icon: string }[] = [
-  { id: 'card',   labelEn: 'Card',     labelMn: 'Карт',      icon: '💳' },
-  { id: 'paypal', labelEn: 'PayPal',   labelMn: 'PayPal',    icon: '🅿' },
-  { id: 'qpay',   labelEn: 'QPay',     labelMn: 'QPay',      icon: '📱' },
-  { id: 'apps',   labelEn: 'MN Apps',  labelMn: 'МН Апп',    icon: '📲' },
-  { id: 'bank',   labelEn: 'Bank',     labelMn: 'Банк',      icon: '🏦' },
+  { id: 'paypal', labelEn: 'PayPal',  labelMn: 'PayPal',  icon: '🅿' },
+  { id: 'qpay',   labelEn: 'QPay',   labelMn: 'QPay',    icon: '📱' },
+  { id: 'apps',   labelEn: 'MN Apps',labelMn: 'МН Апп',  icon: '📲' },
+  { id: 'bank',   labelEn: 'Bank',   labelMn: 'Банк',    icon: '🏦' },
 ]
 
 export default function DonationModal({ open, onClose }: Props) {
   const { t, locale } = useLanguage()
   const isMn = locale === 'mn'
 
-  const [method,     setMethod]     = useState<Method>('card')
-  const [usdAmount,  setUsdAmount]  = useState(10)
+  const [method,     setMethod]     = useState<Method>('paypal')
   const [ppAmount,   setPpAmount]   = useState(10)
   const [qpAmount,   setQpAmount]   = useState(20000)
   const [mntAmount,  setMntAmount]  = useState(20000)
   const [treeCount,  setTreeCount]  = useState(8247)
   const [growing,    setGrowing]    = useState(false)
   const [done,       setDone]       = useState(false)
-  const [doneMethod, setDoneMethod] = useState<Method>('card')
+  const [doneMethod, setDoneMethod] = useState<Method>('paypal')
   const [qpStep,     setQpStep]     = useState<QPayStep>('idle')
   const [qrData,     setQrData]     = useState<QRData | null>(null)
   const [qpError,    setQpError]    = useState('')
@@ -70,14 +67,13 @@ export default function DonationModal({ open, onClose }: Props) {
   const ppTrees  = Math.max(1, Math.floor(ppAmount / 5))
   const qpTrees  = Math.max(1, Math.floor(qpAmount / MNT_PER_TREE))
   const mntTrees = Math.max(1, Math.floor(mntAmount / MNT_PER_TREE))
-  const usdTrees = Math.max(1, Math.floor(usdAmount / 5))
 
   useEffect(() => {
     if (!open) {
       clearInterval(pollRef.current ?? undefined)
       clearTimeout(expireRef.current ?? undefined)
       setTimeout(() => {
-        setMethod('card'); setUsdAmount(10); setPpAmount(10); setQpAmount(20000); setMntAmount(20000)
+        setMethod('paypal'); setPpAmount(10); setQpAmount(20000); setMntAmount(20000)
         setDone(false); setGrowing(false)
         setQpStep('idle'); setQrData(null); setQpError(''); setCopied(null)
       }, 300)
@@ -86,17 +82,6 @@ export default function DonationModal({ open, onClose }: Props) {
 
   function switchMethod(m: Method) {
     setMethod(m); setQpStep('idle'); setQrData(null); setQpError('')
-  }
-
-  function handleStripe() {
-    const link = process.env.NEXT_PUBLIC_STRIPE_PAYMENT_LINK ?? ''
-    if (link) {
-      window.open(`${link}?amount=${usdAmount * 100}`, '_blank', 'noopener,noreferrer')
-    } else {
-      window.open(`https://buy.stripe.com/placeholder?amount=${usdAmount}`, '_blank', 'noopener,noreferrer')
-    }
-    setDoneMethod('card'); setDone(true); setGrowing(true)
-    setTimeout(() => setTreeCount(c => c + usdTrees), 1200)
   }
 
   function handlePayPal() {
@@ -202,7 +187,7 @@ export default function DonationModal({ open, onClose }: Props) {
                 </div>
 
                 {/* Tabs */}
-                <div className="grid grid-cols-5 gap-1 p-1 bg-white/5 rounded-xl">
+                <div className="grid grid-cols-4 gap-1 p-1 bg-white/5 rounded-xl">
                   {TABS.map(tab => (
                     <button
                       key={tab.id}
@@ -218,57 +203,13 @@ export default function DonationModal({ open, onClose }: Props) {
                   ))}
                 </div>
 
-                {/* ── CARD / STRIPE ── */}
-                {method === 'card' && (
-                  <div className="space-y-4">
-                    <div>
-                      <p className="text-white/35 text-[10px] font-semibold tracking-widest uppercase mb-2">{isMn ? 'Дүн сонгох' : 'Select amount'}</p>
-                      <div className="flex flex-wrap gap-2">
-                        {USD_AMOUNTS.map(a => (
-                          <button key={a} onClick={() => setUsdAmount(a)}
-                            style={usdAmount === a ? { background: '#E03D1E' } : undefined}
-                            className={`px-4 py-2.5 rounded-xl font-bold text-sm border transition-all min-h-[44px] ${usdAmount === a ? 'text-white border-transparent' : 'bg-white/5 text-white/65 border-white/10 hover:border-vermilion/40'}`}>
-                            ${a}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div className="flex items-center gap-2.5 p-3 rounded-xl bg-green-950/50 border border-green-900/50">
-                      <span className="text-lg">🌱</span>
-                      <p className="text-green-400 text-sm">
-                        <strong>${usdAmount}</strong> {isMn ? `= ${usdTrees} мод тарина` : `plants ${usdTrees} tree${usdTrees !== 1 ? 's' : ''}`}
-                      </p>
-                    </div>
-
-                    <motion.button onClick={handleStripe} whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.97 }}
-                      className="w-full py-3.5 rounded-xl font-black text-sm text-white tracking-wide flex items-center justify-center gap-2"
-                      style={{ background: '#635BFF' }}>
-                      <span>💳</span> {isMn ? `Картаар төлөх — $${usdAmount}` : `Pay $${usdAmount} by card`}
-                    </motion.button>
-
-                    {/* Apple Pay / Google Pay */}
-                    <div className="grid grid-cols-2 gap-2">
-                      <motion.button onClick={handleStripe} whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.97 }}
-                        className="py-3 rounded-xl font-bold text-sm text-white flex items-center justify-center gap-2 bg-black border border-white/15 hover:border-white/30 transition-colors">
-                        <span className="text-base"> Apple Pay</span>
-                      </motion.button>
-                      <motion.button onClick={handleStripe} whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.97 }}
-                        className="py-3 rounded-xl font-bold text-sm text-white flex items-center justify-center gap-2 bg-white/10 border border-white/15 hover:border-white/30 transition-colors">
-                        <span className="text-base">G Pay</span>
-                      </motion.button>
-                    </div>
-                    <p className="text-white/20 text-[10px] text-center">{isMn ? 'Stripe аюулгүй төлбөрийн системээр боловсруулагдана' : 'Powered by Stripe — secure card processing'}</p>
-                  </div>
-                )}
-
                 {/* ── PAYPAL ── */}
                 {method === 'paypal' && (
                   <div className="space-y-4">
                     <div>
                       <p className="text-white/35 text-[10px] font-semibold tracking-widest uppercase mb-2">{isMn ? 'Дүн сонгох' : 'Select amount'}</p>
                       <div className="flex flex-wrap gap-2">
-                        {USD_AMOUNTS.map(a => (
+                        {[5, 10, 25, 50, 100].map(a => (
                           <button key={a} onClick={() => setPpAmount(a)}
                             style={ppAmount === a ? { background: '#E03D1E' } : undefined}
                             className={`px-4 py-2.5 rounded-xl font-bold text-sm border transition-all min-h-[44px] ${ppAmount === a ? 'text-white border-transparent' : 'bg-white/5 text-white/65 border-white/10 hover:border-vermilion/40'}`}>
