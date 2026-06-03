@@ -98,7 +98,7 @@ export const TEAM = [
     roleKey: 'team.role.coordinator',
     descriptionMn: 'Ерөнхий зохицуулагчийн хувиар экспедицийн логистик, маршрут, багийн зохицуулалтыг хариуцна.',
     descriptionEn: 'General Coordinator managing expedition logistics, route planning, and team coordination.',
-    image: '/team/mandukhai.jpg',
+    image: '/team/mandukhai.png',
     social: { facebook: '#' },
   },
   {
