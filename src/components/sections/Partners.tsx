@@ -102,28 +102,25 @@ export default function Partners() {
           <p className="text-white/30 text-[10px] font-black tracking-[0.45em] uppercase">
             {locale === 'mn' ? 'Стратегийн түнш байгууллагууд' : 'Strategic Partners'}
           </p>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
             {STRATEGIC.map((p, i) => (
               <motion.div
                 key={p.logo}
                 initial={{ opacity: 0, y: 20 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: 0.2 + i * 0.08, duration: 0.6 }}
-                className="flex flex-col items-center gap-3 p-4 rounded-xl border border-white/8 bg-white hover:border-vermilion/30 transition-colors group"
+                className="flex items-center justify-center p-5 rounded-xl border border-white/8 bg-white hover:border-vermilion/30 transition-colors group"
                 title={locale === 'mn' ? p.nameMn : p.nameEn}
               >
-                <div className="relative w-full h-16">
+                <div className="relative w-full h-24">
                   <Image
                     src={p.logo}
                     alt={locale === 'mn' ? p.nameMn : p.nameEn}
                     fill
-                    className="object-contain"
-                    sizes="(max-width: 768px) 40vw, 180px"
+                    className="object-contain p-2"
+                    sizes="(max-width: 768px) 40vw, 200px"
                   />
                 </div>
-                <p className="text-[#1a1a14] text-[10px] font-semibold text-center leading-tight line-clamp-2">
-                  {locale === 'mn' ? p.nameMn : p.nameEn}
-                </p>
               </motion.div>
             ))}
           </div>
