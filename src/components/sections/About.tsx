@@ -1,7 +1,6 @@
 'use client'
 
 import { useRef } from 'react'
-import Image from 'next/image'
 import { motion, useInView } from 'framer-motion'
 import { useLanguage } from '@/components/providers/LanguageProvider'
 
@@ -125,23 +124,22 @@ export default function About() {
           </div>
         </div>
 
-        {/* ── Desert photo ────────────────────────────────────────────────────── */}
+        {/* ── Expedition video ─────────────────────────────────────────────────── */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.35, duration: 0.8 }}
-          className="relative w-full h-40 sm:h-56 md:h-72 rounded-2xl overflow-hidden border border-white/8"
+          className="relative w-full rounded-2xl overflow-hidden border border-white/8"
+          style={{ paddingBottom: '56.25%' }}
         >
-          <Image
-            src="/about-camels.jpg"
-            alt="Bactrian camels by a desert river in Mongolia"
-            fill
-            className="object-cover"
-            sizes="(max-width: 768px) 100vw, 90vw"
-            priority
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/6VblZ_AGpso?rel=0&modestbranding=1&color=white"
+            title={locale === 'mn' ? 'Монголын Говь цөл — экспедицийн эхлэл' : 'Mongolian Gobi — where the expedition begins'}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+            className="absolute inset-0 w-full h-full"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#050508]/60 to-transparent" />
-          <div className="absolute bottom-4 left-5">
+          <div className="absolute bottom-4 left-5 pointer-events-none">
             <p className="text-white/50 text-[10px] font-semibold tracking-wider uppercase">
               {locale === 'mn' ? 'Монголын Говь цөл — экспедицийн эхлэл' : 'Mongolian Gobi — where the expedition begins'}
             </p>

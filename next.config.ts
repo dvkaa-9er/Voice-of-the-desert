@@ -38,6 +38,7 @@ const securityHeaders = [
       "font-src 'self'",
       "connect-src 'self'",
       "worker-src 'self' blob:",
+      "frame-src https://www.youtube-nocookie.com https://www.youtube.com",
       "frame-ancestors 'none'",
     ].join('; '),
   },
