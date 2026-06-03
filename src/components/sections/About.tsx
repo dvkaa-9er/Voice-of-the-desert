@@ -133,7 +133,7 @@ export default function About() {
           style={{ paddingBottom: '56.25%' }}
         >
           <iframe
-            src="https://www.youtube-nocookie.com/embed/6VblZ_AGpso?rel=0&modestbranding=1&color=white"
+            src="https://www.youtube-nocookie.com/embed/6VblZ_AGpso?autoplay=1&mute=1&rel=0&modestbranding=1&color=white&playsinline=1"
             title={locale === 'mn' ? 'Монголын Говь цөл — экспедицийн эхлэл' : 'Mongolian Gobi — where the expedition begins'}
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen
