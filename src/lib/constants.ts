@@ -134,11 +134,11 @@ export const TEAM = [
   {
     id: 7,
     name: 'Б.Батномин',
-    nameEn: 'B. Batnomyn',
+    nameEn: 'B. Batnomin',
     roleKey: 'team.role.deputy',
     descriptionMn: 'Үйл ажиллагаа хариуцсан дэд захирлын хувиар төслийн өдөр тутмын үйл ажиллагаа, гүйцэтгэлийг хариуцан удирдана.',
     descriptionEn: 'Deputy Director of Operations overseeing the day-to-day execution and operational management of the project.',
-    image: '/team/batnomyn.jpg',
+    image: '/team/batnomin.png',
     social: { facebook: '#' },
   },
 ]
