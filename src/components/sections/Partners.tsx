@@ -1,21 +1,35 @@
 'use client'
 
 import { useRef } from 'react'
+import Image from 'next/image'
 import { motion, useInView } from 'framer-motion'
 import { useLanguage } from '@/components/providers/LanguageProvider'
 
 const STRATEGIC = [
   {
-    nameMn: 'UNCCD COP17 Улаанбаатар 2026',
-    nameEn: 'UNCCD COP17 Ulaanbaatar 2026',
-    abbr: 'UNCCD',
-    color: '#D4AF37',
+    nameMn: 'Монгол Улсын Ерөнхийлөгчийн Тамгын Газар',
+    nameEn: "Office of the President of Mongolia",
+    logo: '/partners/partner-president.png',
   },
   {
-    nameMn: 'Монголын Үндэсний Худалдаа Аж Үйлдвэрийн Танхим',
-    nameEn: 'Mongolian National Chamber of Commerce & Industry',
-    abbr: 'МҮХАҮТ',
-    color: '#FF6B35',
+    nameMn: 'Байгаль Орчин, Уур Амьсгалын Өөрчлөлтийн Яам',
+    nameEn: 'Ministry of Environment & Climate Change',
+    logo: '/partners/partner-environment.png',
+  },
+  {
+    nameMn: 'НҮБ-ын Цөлжилтийн Эсрэг Конвенц',
+    nameEn: 'UN Convention to Combat Desertification',
+    logo: '/partners/partner-unccd.png',
+  },
+  {
+    nameMn: 'UNCCD COP17 Улаанбаатар 2026',
+    nameEn: 'UNCCD COP17 Ulaanbaatar 2026',
+    logo: '/partners/partner-cop17.png',
+  },
+  {
+    nameMn: 'Монгол Улсын Шинжлэх Ухааны Академи',
+    nameEn: 'Mongolian Academy of Sciences',
+    logo: '/partners/partner-academy.png',
   },
 ]
 
@@ -88,24 +102,28 @@ export default function Partners() {
           <p className="text-white/30 text-[10px] font-black tracking-[0.45em] uppercase">
             {locale === 'mn' ? 'Стратегийн түнш байгууллагууд' : 'Strategic Partners'}
           </p>
-          <div className="grid sm:grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
             {STRATEGIC.map((p, i) => (
               <motion.div
-                key={p.abbr}
+                key={p.logo}
                 initial={{ opacity: 0, y: 20 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: 0.2 + i * 0.1, duration: 0.6 }}
-                className="flex items-center gap-5 p-5 rounded-xl border border-white/8 bg-white/[0.025] hover:border-white/20 transition-colors group"
+                transition={{ delay: 0.2 + i * 0.08, duration: 0.6 }}
+                className="flex flex-col items-center gap-3 p-4 rounded-xl border border-white/8 bg-white hover:border-vermilion/30 transition-colors group"
+                title={locale === 'mn' ? p.nameMn : p.nameEn}
               >
-                <div
-                  className="w-12 h-12 rounded-xl flex items-center justify-center text-xs font-black shrink-0"
-                  style={{ background: p.color + '20', color: p.color }}
-                >
-                  {p.abbr}
+                <div className="relative w-full h-16">
+                  <Image
+                    src={p.logo}
+                    alt={locale === 'mn' ? p.nameMn : p.nameEn}
+                    fill
+                    className="object-contain"
+                    sizes="(max-width: 768px) 40vw, 180px"
+                  />
                 </div>
-                <span className="text-white/70 text-sm font-medium leading-snug group-hover:text-white transition-colors line-clamp-2">
+                <p className="text-[#1a1a14] text-[10px] font-semibold text-center leading-tight line-clamp-2">
                   {locale === 'mn' ? p.nameMn : p.nameEn}
-                </span>
+                </p>
               </motion.div>
             ))}
           </div>
