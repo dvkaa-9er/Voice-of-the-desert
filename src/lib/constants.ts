@@ -93,16 +93,6 @@ export const TEAM = [
   },
   {
     id: 3,
-    name: 'Ц.Мандухай',
-    nameEn: 'Ts. Mandukhai',
-    roleKey: 'team.role.coordinator',
-    descriptionMn: 'Ерөнхий зохицуулагчийн хувиар экспедицийн логистик, маршрут, багийн зохицуулалтыг хариуцна.',
-    descriptionEn: 'General Coordinator managing expedition logistics, route planning, and team coordination.',
-    image: '/team/mandukhai.png',
-    social: { facebook: '#' },
-  },
-  {
-    id: 4,
     name: 'Б.Наминчимэд',
     nameEn: 'B. Naminchimed',
     roleKey: 'team.role.expedition',
@@ -139,6 +129,16 @@ export const TEAM = [
     descriptionMn: 'Үйл ажиллагаа хариуцсан дэд захирлын хувиар төслийн өдөр тутмын үйл ажиллагаа, гүйцэтгэлийг хариуцан удирдана.',
     descriptionEn: 'Deputy Director of Operations overseeing the day-to-day execution and operational management of the project.',
     image: '/team/batnomin.png',
+    social: { facebook: '#' },
+  },
+  {
+    id: 8,
+    name: 'Ц.Мандухай',
+    nameEn: 'Ts. Mandukhai',
+    roleKey: 'team.role.coordinator',
+    descriptionMn: 'Ерөнхий зохицуулагчийн хувиар экспедицийн логистик, маршрут, багийн зохицуулалтыг хариуцна.',
+    descriptionEn: 'General Coordinator managing expedition logistics, route planning, and team coordination.',
+    image: '/team/mandukhai.png',
     social: { facebook: '#' },
   },
 ]
