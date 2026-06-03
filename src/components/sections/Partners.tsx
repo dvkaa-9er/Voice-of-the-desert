@@ -37,7 +37,7 @@ function LogoCard({ logo, nameMn, nameEn, delay, locale }: {
           src={logo}
           alt={locale === 'mn' ? nameMn : nameEn}
           fill
-          className="object-contain"
+          className="object-contain object-center"
           sizes="(max-width: 640px) 45vw, (max-width: 1024px) 30vw, 200px"
         />
       </div>
