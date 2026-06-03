@@ -6,69 +6,48 @@ import { motion, useInView } from 'framer-motion'
 import { useLanguage } from '@/components/providers/LanguageProvider'
 
 const STRATEGIC = [
-  {
-    nameMn: 'Монгол Улсын Ерөнхийлөгчийн Тамгын Газар',
-    nameEn: "Office of the President of Mongolia",
-    logo: '/partners/partner-president.png',
-  },
-  {
-    nameMn: 'Байгаль Орчин, Уур Амьсгалын Өөрчлөлтийн Яам',
-    nameEn: 'Ministry of Environment & Climate Change',
-    logo: '/partners/partner-environment.png',
-  },
-  {
-    nameMn: 'НҮБ-ын Цөлжилтийн Эсрэг Конвенц',
-    nameEn: 'UN Convention to Combat Desertification',
-    logo: '/partners/partner-unccd.png',
-  },
-  {
-    nameMn: 'UNCCD COP17 Улаанбаатар 2026',
-    nameEn: 'UNCCD COP17 Ulaanbaatar 2026',
-    logo: '/partners/partner-cop17.png',
-  },
-  {
-    nameMn: 'Монгол Улсын Шинжлэх Ухааны Академи',
-    nameEn: 'Mongolian Academy of Sciences',
-    logo: '/partners/partner-academy.png',
-  },
+  { nameMn: 'Монгол Улсын Ерөнхийлөгчийн Тамгын Газар', nameEn: 'Office of the President of Mongolia',        logo: '/partners/partner-president.png' },
+  { nameMn: 'Байгаль Орчин, Уур Амьсгалын Өөрчлөлтийн Яам', nameEn: 'Ministry of Environment & Climate Change', logo: '/partners/partner-environment.png' },
+  { nameMn: 'НҮБ-ын Цөлжилтийн Эсрэг Конвенц',           nameEn: 'UN Convention to Combat Desertification',   logo: '/partners/partner-unccd.png' },
+  { nameMn: 'UNCCD COP17 Улаанбаатар 2026',               nameEn: 'UNCCD COP17 Ulaanbaatar 2026',              logo: '/partners/partner-cop17.png' },
+  { nameMn: 'Монгол Улсын Шинжлэх Ухааны Академи',       nameEn: 'Mongolian Academy of Sciences',            logo: '/partners/partner-academy.png' },
 ]
 
 const COLLABORATORS = [
-  {
-    nameMn: 'Байгаль Орчин, Уур Амьсгалын Өөрчлөлтийн Яам',
-    nameEn: 'Ministry of Environment & Climate Change',
-    abbr: 'БОУАӨЯ',
-    color: '#2D7A4F',
-  },
-  {
-    nameMn: 'Хил Хамгаалах Ерөнхий Газар',
-    nameEn: 'General Border Protection Department',
-    abbr: 'ХХЕГ',
-    color: '#4CAF50',
-  },
-  {
-    nameMn: 'Монгол Улсын Шинжлэх Ухааны Академи',
-    nameEn: 'Mongolian Academy of Sciences',
-    abbr: 'МУША',
-    color: '#C9A84C',
-  },
-  {
-    nameMn: 'Монголын Залуучуудын Холбоо',
-    nameEn: 'Youth Union of Mongolia',
-    abbr: 'МЗХ',
-    color: '#E34234',
-  },
-  {
-    nameMn: 'Централ Телевиз',
-    nameEn: 'Central Television',
-    abbr: 'CTV',
-    color: '#FF6B35',
-  },
+  { nameMn: 'Монголын Үндэсний Худалдаа Аж Үйлдвэрийн Танхим', nameEn: 'Mongolian National Chamber of Commerce & Industry', logo: '/partners/partner-chamber.png' },
+  { nameMn: 'Централ Телевиз',                            nameEn: 'Central Television',                       logo: '/partners/partner-ctv.png' },
+  { nameMn: 'Монголын Залуучуудын Холбоо',                nameEn: 'Youth Union of Mongolia',                  logo: '/partners/partner-youth.png' },
+  { nameMn: 'Газарзүй, Геоэкологийн Хүрээлэн',           nameEn: 'Institute of Geography & Geo-ecology',     logo: '/partners/partner-geoeco.png' },
+  { nameMn: 'Green Mongolia Hub',                         nameEn: 'Green Mongolia Hub',                       logo: '/partners/partner-greenmongolia.png' },
 ]
+
+function LogoCard({ logo, nameMn, nameEn, delay, locale }: {
+  logo: string; nameMn: string; nameEn: string; delay: number; locale: string
+}) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 16 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay, duration: 0.6 }}
+      className="flex items-center justify-center p-4 rounded-xl border border-white/8 bg-white hover:border-vermilion/30 transition-colors"
+      title={locale === 'mn' ? nameMn : nameEn}
+    >
+      <div className="relative w-full h-20">
+        <Image
+          src={logo}
+          alt={locale === 'mn' ? nameMn : nameEn}
+          fill
+          className="object-contain"
+          sizes="(max-width: 640px) 45vw, (max-width: 1024px) 30vw, 200px"
+        />
+      </div>
+    </motion.div>
+  )
+}
 
 export default function Partners() {
   const { t, locale } = useLanguage()
-  const ref = useRef<HTMLDivElement>(null)
+  const ref    = useRef<HTMLDivElement>(null)
   const inView = useInView(ref, { once: true, margin: '-80px' })
 
   return (
@@ -102,26 +81,9 @@ export default function Partners() {
           <p className="text-white/30 text-[10px] font-black tracking-[0.45em] uppercase">
             {locale === 'mn' ? 'Стратегийн түнш байгууллагууд' : 'Strategic Partners'}
           </p>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
             {STRATEGIC.map((p, i) => (
-              <motion.div
-                key={p.logo}
-                initial={{ opacity: 0, y: 20 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: 0.2 + i * 0.08, duration: 0.6 }}
-                className="flex items-center justify-center p-5 rounded-xl border border-white/8 bg-white hover:border-vermilion/30 transition-colors group"
-                title={locale === 'mn' ? p.nameMn : p.nameEn}
-              >
-                <div className="relative w-full h-24">
-                  <Image
-                    src={p.logo}
-                    alt={locale === 'mn' ? p.nameMn : p.nameEn}
-                    fill
-                    className="object-contain p-2"
-                    sizes="(max-width: 768px) 40vw, 200px"
-                  />
-                </div>
-              </motion.div>
+              <LogoCard key={p.logo} {...p} delay={0.2 + i * 0.08} locale={locale} />
             ))}
           </div>
         </motion.div>
@@ -130,29 +92,15 @@ export default function Partners() {
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.3, duration: 0.7 }}
+          transition={{ delay: 0.35, duration: 0.7 }}
           className="space-y-5"
         >
           <p className="text-white/30 text-[10px] font-black tracking-[0.45em] uppercase">
             {locale === 'mn' ? 'Хамтрагч байгууллагууд' : 'Collaborating Partners'}
           </p>
-          <div className="flex flex-wrap gap-3">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
             {COLLABORATORS.map((p, i) => (
-              <motion.div
-                key={p.abbr}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={inView ? { opacity: 1, scale: 1 } : {}}
-                transition={{ delay: 0.35 + i * 0.07, duration: 0.4 }}
-                className="flex items-center gap-3 px-4 py-3 rounded-full border border-white/10 bg-white/[0.03] hover:border-white/25 transition-colors group cursor-default"
-              >
-                <div
-                  className="w-2 h-2 rounded-full shrink-0"
-                  style={{ background: p.color }}
-                />
-                <span className="text-white/60 text-sm font-medium group-hover:text-white/85 transition-colors whitespace-nowrap">
-                  {locale === 'mn' ? p.nameMn : p.nameEn}
-                </span>
-              </motion.div>
+              <LogoCard key={p.logo} {...p} delay={0.4 + i * 0.08} locale={locale} />
             ))}
           </div>
         </motion.div>
