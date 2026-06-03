@@ -29,8 +29,7 @@ function LogoCard({ logo, nameMn, nameEn, delay, locale }: {
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay, duration: 0.6 }}
-      className="flex items-center justify-center p-4 rounded-xl border border-white/8 bg-white hover:border-vermilion/30 transition-colors"
-      title={locale === 'mn' ? nameMn : nameEn}
+      className="flex flex-col items-center justify-between gap-3 p-4 rounded-xl border border-white/8 bg-white hover:border-vermilion/30 transition-colors"
     >
       <div className="relative w-full h-20">
         <Image
@@ -41,6 +40,9 @@ function LogoCard({ logo, nameMn, nameEn, delay, locale }: {
           sizes="(max-width: 640px) 45vw, (max-width: 1024px) 30vw, 200px"
         />
       </div>
+      <p className="text-[#1a1a14]/70 text-[10px] font-semibold text-center leading-snug line-clamp-2 w-full">
+        {locale === 'mn' ? nameMn : nameEn}
+      </p>
     </motion.div>
   )
 }
