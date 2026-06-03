@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { useLanguage } from '@/components/providers/LanguageProvider'
 
@@ -37,8 +37,18 @@ const WHY_POINTS = [
 
 export default function About() {
   const { t, locale } = useLanguage()
-  const ref    = useRef<HTMLDivElement>(null)
-  const inView = useInView(ref, { once: true, margin: '-80px' })
+  const ref       = useRef<HTMLDivElement>(null)
+  const inView    = useInView(ref, { once: true, margin: '-80px' })
+  const iframeRef = useRef<HTMLIFrameElement>(null)
+  const [muted, setMuted] = useState(true)
+
+  function unmute() {
+    iframeRef.current?.contentWindow?.postMessage(
+      JSON.stringify({ event: 'command', func: 'unMute', args: [] }),
+      'https://www.youtube-nocookie.com'
+    )
+    setMuted(false)
+  }
 
   return (
     <section id="about" ref={ref} className="relative py-16 md:py-24 px-6 md:px-12">
@@ -133,12 +143,32 @@ export default function About() {
           style={{ paddingBottom: '56.25%' }}
         >
           <iframe
-            src="https://www.youtube-nocookie.com/embed/6VblZ_AGpso?autoplay=1&mute=1&rel=0&modestbranding=1&color=white&playsinline=1"
+            ref={iframeRef}
+            src="https://www.youtube-nocookie.com/embed/6VblZ_AGpso?autoplay=1&mute=1&rel=0&modestbranding=1&color=white&playsinline=1&enablejsapi=1"
             title={locale === 'mn' ? 'Монголын Говь цөл — экспедицийн эхлэл' : 'Mongolian Gobi — where the expedition begins'}
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen
             className="absolute inset-0 w-full h-full"
           />
+
+          {/* Unmute button — visible while muted */}
+          {muted && (
+            <motion.button
+              onClick={unmute}
+              initial={{ opacity: 0, y: 6 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 6 }}
+              transition={{ delay: 1.2, duration: 0.4 }}
+              className="absolute bottom-4 right-5 flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/60 border border-white/20 text-white/80 text-[11px] font-semibold tracking-wide backdrop-blur-sm hover:bg-black/80 hover:text-white transition-colors"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M3.63 3.63a1 1 0 0 0-1.41 1.41L7.29 10.1A5.995 5.995 0 0 0 6 14v3l-2 2v1h14.17l1.2 1.2a1 1 0 0 0 1.41-1.41L3.63 3.63zM12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-7.83V14c0-3.07-1.64-5.64-4.5-6.32V7c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68c-.24.06-.47.15-.69.24L18 18.17V14.17z"/>
+                <path d="M7.5 14c0-.36.04-.71.1-1.05l8.55 8.55A5.96 5.96 0 0 1 7.5 14z" className="hidden"/>
+              </svg>
+              {locale === 'mn' ? 'Дуу нэмэх' : 'Tap to unmute'}
+            </motion.button>
+          )}
+
           <div className="absolute bottom-4 left-5 pointer-events-none">
             <p className="text-white/50 text-[10px] font-semibold tracking-wider uppercase">
               {locale === 'mn' ? 'Монголын Говь цөл — экспедицийн эхлэл' : 'Mongolian Gobi — where the expedition begins'}
