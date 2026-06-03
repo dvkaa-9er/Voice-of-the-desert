@@ -27,9 +27,16 @@ interface QRData { invoice_id: string; qr_image: string; urls: { name: string; l
 interface Props  { open: boolean; onClose: () => void }
 
 const BANK_ACCOUNTS = [
-  { bank: 'Голомт банк',  bankEn: 'Golomt Bank',   account: '1203XXX',  holder: 'Цөлийн дуу хоолой ТББ' },
-  { bank: 'Хаан банк',   bankEn: 'Khan Bank',      account: '5044XXX',  holder: 'Цөлийн дуу хоолой ТББ' },
-  { bank: 'ХХБ банк',    bankEn: 'TDB',            account: '4001XXX',  holder: 'Цөлийн дуу хоолой ТББ' },
+  {
+    bank:    'Худалдаа хөгжлийн банк',
+    bankEn:  'Trade and Development Bank',
+    iban:    '27000 4000',
+    account: '416130346',
+    currency:'₮ Төгрөг',
+    holder:  'Цөлийн дуу хоолой НҮТББ',
+    ref:     'Хандив, Компаний нэр, РД',
+    refEn:   'Donation, Company name, Registration No.',
+  },
 ]
 
 const TABS: { id: Method; labelEn: string; labelMn: string; icon: string }[] = [
@@ -414,13 +421,16 @@ export default function DonationModal({ open, onClose }: Props) {
                           <p className="text-white font-bold text-sm">{isMn ? b.bank : b.bankEn}</p>
 
                           {[
-                            { label: isMn ? 'Дансны дугаар' : 'Account number', value: b.account, key: `acc-${i}` },
-                            { label: isMn ? 'Хүлээн авагч' : 'Account holder',  value: b.holder,  key: `hld-${i}` },
+                            { label: isMn ? 'Ибан дугаар'    : 'IBAN',            value: b.iban,     key: `iban-${i}` },
+                            { label: isMn ? 'Дансны дугаар'  : 'Account number',  value: b.account,  key: `acc-${i}`  },
+                            { label: isMn ? 'Валют'          : 'Currency',        value: b.currency, key: `cur-${i}`  },
+                            { label: isMn ? 'Данс эзэмшигч' : 'Account holder',  value: b.holder,   key: `hld-${i}`  },
+                            { label: isMn ? 'Гүйлгээний утга': 'Reference',       value: isMn ? b.ref : b.refEn, key: `ref-${i}` },
                           ].map(row => (
                             <div key={row.key} className="flex items-center justify-between gap-2">
-                              <div>
+                              <div className="min-w-0">
                                 <p className="text-white/35 text-[10px] uppercase tracking-widest">{row.label}</p>
-                                <p className="text-white/80 text-xs font-mono mt-0.5">{row.value}</p>
+                                <p className="text-white/80 text-xs font-mono mt-0.5 break-all">{row.value}</p>
                               </div>
                               <button
                                 onClick={() => copyText(row.value, row.key)}
@@ -437,8 +447,8 @@ export default function DonationModal({ open, onClose }: Props) {
                     <div className="p-3 rounded-xl bg-amber-950/40 border border-amber-800/30">
                       <p className="text-amber-400/80 text-[10px] leading-relaxed">
                         {isMn
-                          ? '⚠ Дансны дугаарыг баталгаажуулахын тулд contact@voiceofdesert.org хаягаар холбоо барина уу.'
-                          : '⚠ Contact contact@voiceofdesert.org to confirm your account details before transferring.'}
+                          ? '⚠ Гүйлгээний утганд: Хандив, Компаний нэр, РД гэж заавал бичнэ үү.'
+                          : '⚠ Reference must include: Donation, Company name, Registration No.'}
                       </p>
                     </div>
                   </div>
