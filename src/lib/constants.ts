@@ -93,12 +93,12 @@ export const TEAM = [
   },
   {
     id: 3,
-    name: 'Ц.Баянбилэг',
-    nameEn: 'Ts. Bayanbileg',
+    name: 'Ц.Мандухай',
+    nameEn: 'Ts. Mandukhai',
     roleKey: 'team.role.coordinator',
     descriptionMn: 'Ерөнхий зохицуулагчийн хувиар экспедицийн логистик, маршрут, багийн зохицуулалтыг хариуцна.',
     descriptionEn: 'General Coordinator managing expedition logistics, route planning, and team coordination.',
-    image: '/team/bayanbileg.jpg',
+    image: '/team/mandukhai.jpg',
     social: { facebook: '#' },
   },
   {
@@ -129,6 +129,16 @@ export const TEAM = [
     descriptionMn: 'Газарзүй, геоэкологийн хүрээлэнгийн доктор, профессор. Маршрутын дагуух байгаль орчны судалгааг удирдан явуулна.',
     descriptionEn: 'Doctor and Professor at the Institute of Geography & Geo-ecology. Leads environmental research along the expedition route.',
     image: '/team/haulandbek.jpg',
+    social: { facebook: '#' },
+  },
+  {
+    id: 7,
+    name: 'Б.Батномин',
+    nameEn: 'B. Batnomyn',
+    roleKey: 'team.role.deputy',
+    descriptionMn: 'Үйл ажиллагаа хариуцсан дэд захирлын хувиар төслийн өдөр тутмын үйл ажиллагаа, гүйцэтгэлийг хариуцан удирдана.',
+    descriptionEn: 'Deputy Director of Operations overseeing the day-to-day execution and operational management of the project.',
+    image: '/team/batnomyn.jpg',
     social: { facebook: '#' },
   },
 ]

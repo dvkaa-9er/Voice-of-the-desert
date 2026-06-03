@@ -67,6 +67,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     'team.role.expedition': 'Expedition Leader',
     'team.role.runner': 'Ultra-Marathon World Champion',
     'team.role.scientist': 'Geography & Geo-Ecology Professor',
+    'team.role.deputy': 'Deputy Director of Operations',
 
     // Partners
     'partners.title': 'Our Partners',
@@ -159,6 +160,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     'team.role.expedition': 'Экспедицийн ахлагч',
     'team.role.runner': 'Хэт холын зайн гүйлтийн дэлхийн аварга',
     'team.role.scientist': 'Газарзүй, геоэкологийн доктор, профессор',
+    'team.role.deputy': 'Үйл ажиллагаа хариуцсан дэд захирал',
 
     // Partners
     'partners.title': 'Манай түншүүд',
