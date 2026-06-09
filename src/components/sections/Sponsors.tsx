@@ -220,16 +220,16 @@ function ValueCard({ v, index, inView }: { v: typeof VALUES[number]; index: numb
       <div className="absolute top-0 left-6 right-6 h-px rounded-full" style={{ background: `linear-gradient(90deg, ${v.color}80, transparent)` }} />
 
       <div className="flex items-start gap-4 mb-4">
-        <span className="text-[11px] font-black tracking-[0.4em]" style={{ color: v.color }}>{v.n}</span>
+        <span className="text-xs font-black tracking-[0.4em]" style={{ color: v.color }}>{v.n}</span>
         <div>
-          <h3 className="font-black text-white text-sm leading-tight">{locale === 'mn' ? v.titleMn : v.titleEn}</h3>
-          <p className="text-[10px] tracking-wider mt-0.5" style={{ color: v.color + 'cc' }}>
+          <h3 className="font-black text-white text-base leading-tight">{locale === 'mn' ? v.titleMn : v.titleEn}</h3>
+          <p className="text-xs tracking-wider mt-0.5" style={{ color: v.color + 'cc' }}>
             {locale === 'mn' ? v.tagMn : v.tagEn}
           </p>
         </div>
       </div>
 
-      <p className="text-white/45 text-xs leading-relaxed">
+      <p className="text-white/45 text-sm leading-relaxed">
         {locale === 'mn' ? v.bodyMn : v.bodyEn}
       </p>
     </motion.div>
@@ -252,7 +252,7 @@ function TierCard({ tier, index, inView }: { tier: Tier; index: number; inView: 
 
       {tier.featured && (
         <div
-          className="absolute top-4 right-4 text-[9px] font-black tracking-[0.4em] uppercase px-3 py-1 rounded-full"
+          className="absolute top-4 right-4 text-[11px] font-black tracking-[0.4em] uppercase px-3 py-1 rounded-full"
           style={{ background: tier.color + '25', color: tier.color }}
         >
           Top Tier
@@ -270,7 +270,7 @@ function TierCard({ tier, index, inView }: { tier: Tier; index: number; inView: 
               >
                 {locale === 'mn' ? tier.label : tier.labelEn}
               </h3>
-              <p className="text-white/40 text-xs mt-1">
+              <p className="text-white/40 text-sm mt-1">
                 {locale === 'mn' ? tier.tag : tier.tagEn}
               </p>
             </div>
@@ -279,7 +279,7 @@ function TierCard({ tier, index, inView }: { tier: Tier; index: number; inView: 
                 {locale === 'mn' ? tier.price : tier.priceEn}
               </div>
               {tier.slots && (
-                <div className="text-white/30 text-[10px] font-bold tracking-wider mt-1 uppercase">
+                <div className="text-white/30 text-xs font-bold tracking-wider mt-1 uppercase">
                   {locale === 'mn' ? tier.slots : tier.slotsEn}
                 </div>
               )}
@@ -293,7 +293,7 @@ function TierCard({ tier, index, inView }: { tier: Tier; index: number; inView: 
         {/* Benefits */}
         <ul className="space-y-2.5">
           {benefits.map((b, i) => (
-            <li key={i} className="flex items-start gap-3 text-white/55 text-sm leading-relaxed">
+            <li key={i} className="flex items-start gap-3 text-white/55 text-base leading-relaxed">
               <span className="shrink-0 mt-1 w-1 h-1 rounded-full" style={{ background: tier.color }} />
               {b}
             </li>
@@ -308,7 +308,7 @@ function TierCard({ tier, index, inView }: { tier: Tier; index: number; inView: 
             }))
             document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
           }}
-          className="w-full mt-2 py-3 rounded-xl text-[11px] font-black tracking-[0.25em] uppercase transition-all duration-200 hover:opacity-90"
+          className="w-full mt-2 py-3 rounded-xl text-xs font-black tracking-[0.25em] uppercase transition-all duration-200 hover:opacity-90"
           style={{ background: tier.color + '18', color: tier.color, border: `1px solid ${tier.color}40` }}
         >
           {locale === 'mn' ? 'Холбоо барих →' : 'Get in touch →'}
@@ -342,7 +342,7 @@ export default function Sponsors() {
           >
             <div className="flex items-center gap-4">
               <div className="w-10 h-0.5 bg-gold/60" />
-              <span className="text-gold/60 text-[10px] font-black tracking-[0.55em] uppercase">
+              <span className="text-gold/60 text-xs font-black tracking-[0.55em] uppercase">
                 {locale === 'mn' ? 'Оролцооны загвар' : 'Partnership Model'}
               </span>
             </div>
@@ -355,7 +355,7 @@ export default function Sponsors() {
               )}
             </h2>
 
-            <p className="text-white/50 text-[clamp(13px,1.3vw,16px)] leading-[1.75] max-w-2xl">
+            <p className="text-white/50 text-[clamp(15px,1.5vw,18px)] leading-[1.75] max-w-2xl">
               {locale === 'mn'
                 ? 'Ийм хэмжээний олон улсын санаачилга нь Монгол Улсын нэрийн өмнөөс хэрэгжих, олон талын оролцоонд тулгуурласан үндэсний түвшний түншлэлийн загвар юм. Энэ төсөлд нэгдэж буй байгууллага нь зөвхөн санхүүгийн дэмжигч биш — Монгол Улсын стратегийн санаачилгын хамтрагч, бодит байр суурь илэрхийлэгч, брэндийн шинэ түүх бүтээгч байх болно.'
                 : 'An international initiative of this scale — implemented under Mongolia\'s name, built on multi-stakeholder collaboration — represents a national-level partnership model. Joining is not just financial support: you become a strategic partner of Mongolia\'s initiative, a genuine voice on climate and sustainability, and the author of a new brand story.'
@@ -381,7 +381,7 @@ export default function Sponsors() {
           >
             <div className="flex items-center gap-4">
               <div className="w-8 h-0.5 bg-white/20" />
-              <span className="text-white/30 text-[10px] font-black tracking-[0.55em] uppercase">
+              <span className="text-white/30 text-xs font-black tracking-[0.55em] uppercase">
                 {locale === 'mn' ? 'Компаниудын оролцооны үнэ цэн' : 'Value of Company Participation'}
               </span>
             </div>
@@ -405,7 +405,7 @@ export default function Sponsors() {
             <div>
               <div className="flex items-center gap-4 mb-3">
                 <div className="w-8 h-0.5 bg-white/20" />
-                <span className="text-white/30 text-[10px] font-black tracking-[0.55em] uppercase">
+                <span className="text-white/30 text-xs font-black tracking-[0.55em] uppercase">
                   {locale === 'mn' ? 'Оролцооны түвшин' : 'Participation Tiers'}
                 </span>
               </div>

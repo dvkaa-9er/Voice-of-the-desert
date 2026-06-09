@@ -43,7 +43,7 @@ export default function News() {
           <div className="space-y-3">
             <div className="flex items-center gap-3">
               <div className="w-8 h-px bg-vermilion/60" />
-              <p className="text-vermilion/70 text-[10px] font-black tracking-[0.5em] uppercase">
+              <p className="text-vermilion/70 text-xs font-black tracking-[0.5em] uppercase">
                 {isMn ? 'Экспедицийн мэдээ' : 'Expedition Updates'}
               </p>
             </div>
@@ -62,7 +62,7 @@ export default function News() {
             {(Object.keys(CATEGORY_COLOR) as NewsCategory[]).map(cat => (
               <span
                 key={cat}
-                className="flex items-center gap-1.5 text-[9px] font-black tracking-[0.25em] uppercase px-2.5 py-1 rounded-full"
+                className="flex items-center gap-1.5 text-[11px] font-black tracking-[0.25em] uppercase px-2.5 py-1 rounded-full"
                 style={{ background: CATEGORY_COLOR[cat] + '18', color: CATEGORY_COLOR[cat] }}
               >
                 <span className="w-1.5 h-1.5 rounded-full" style={{ background: CATEGORY_COLOR[cat] }} />
@@ -95,23 +95,23 @@ export default function News() {
                   {/* Meta row */}
                   <div className="flex items-center justify-between gap-2">
                     <span
-                      className="text-[9px] font-black tracking-[0.3em] uppercase px-2.5 py-1 rounded-full"
+                      className="text-[11px] font-black tracking-[0.3em] uppercase px-2.5 py-1 rounded-full"
                       style={{ background: color + '18', color }}
                     >
                       {label}
                     </span>
-                    <time className="text-white/30 text-[10px] font-medium">
+                    <time className="text-white/30 text-xs font-medium">
                       {formatDate(item.date, locale)}
                     </time>
                   </div>
 
                   {/* Title */}
-                  <h3 className="font-black text-white text-sm leading-snug group-hover:text-white/90 transition-colors">
+                  <h3 className="font-black text-white text-base leading-snug group-hover:text-white/90 transition-colors">
                     {title}
                   </h3>
 
                   {/* Excerpt */}
-                  <p className="text-white/45 text-xs leading-relaxed flex-1">
+                  <p className="text-white/45 text-sm leading-relaxed flex-1">
                     {excerpt}
                   </p>
 
@@ -119,7 +119,7 @@ export default function News() {
                   <div className="flex items-center justify-between pt-1 mt-auto">
                     <a
                       href={item.href}
-                      className="flex items-center gap-1.5 text-[10px] font-black tracking-widest uppercase transition-colors duration-200"
+                      className="flex items-center gap-1.5 text-xs font-black tracking-widest uppercase transition-colors duration-200"
                       style={{ color }}
                     >
                       {isMn ? 'Дэлгэрэнгүй' : 'Read more'}
@@ -132,7 +132,7 @@ export default function News() {
                     <button
                       onClick={() => shareToInstagram({ title, excerpt, date: item.date, category: label, color })}
                       title={isMn ? 'Instagram story-д хуваалцах' : 'Share as Instagram Story'}
-                      className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border border-white/10 text-white/40 hover:text-white/80 hover:border-white/25 hover:bg-white/5 transition-all duration-200 text-[9px] font-black tracking-widest uppercase"
+                      className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border border-white/10 text-white/40 hover:text-white/80 hover:border-white/25 hover:bg-white/5 transition-all duration-200 text-[11px] font-black tracking-widest uppercase"
                     >
                       <InstagramIcon />
                       <span>{isMn ? 'Story' : 'Story'}</span>

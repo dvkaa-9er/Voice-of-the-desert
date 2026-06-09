@@ -88,7 +88,7 @@ export default function Contact() {
                 { key: 'email', type: 'email', field: 'email' },
               ].map(({ key, type, field }) => (
                 <div key={key} className="flex flex-col gap-1.5">
-                  <label className="text-white/60 text-xs font-medium tracking-wider uppercase">
+                  <label className="text-white/60 text-sm font-medium tracking-wider uppercase">
                     {t(`contact.${key}`)}
                   </label>
                   <input
@@ -96,7 +96,7 @@ export default function Contact() {
                     required
                     value={form[field as keyof typeof form]}
                     onChange={(e) => setForm((p) => ({ ...p, [field]: e.target.value }))}
-                    className="bg-white/5 border border-white/15 rounded-xl px-4 py-3.5 text-white placeholder-white/30 text-sm focus:outline-none focus:border-gold/50 focus:bg-white/8 transition-all duration-200"
+                    className="bg-white/5 border border-white/15 rounded-xl px-4 py-3.5 text-white placeholder-white/30 text-base focus:outline-none focus:border-gold/50 focus:bg-white/8 transition-all duration-200"
                     placeholder={t(`contact.${key}`)}
                   />
                 </div>
@@ -111,7 +111,7 @@ export default function Contact() {
                   rows={4}
                   value={form.message}
                   onChange={(e) => setForm((p) => ({ ...p, message: e.target.value }))}
-                  className="bg-white/5 border border-white/15 rounded-xl px-4 py-3.5 text-white placeholder-white/30 text-sm focus:outline-none focus:border-gold/50 focus:bg-white/8 transition-all duration-200 resize-none"
+                  className="bg-white/5 border border-white/15 rounded-xl px-4 py-3.5 text-white placeholder-white/30 text-base focus:outline-none focus:border-gold/50 focus:bg-white/8 transition-all duration-200 resize-none"
                   placeholder={t('contact.message')}
                 />
               </div>
@@ -125,7 +125,7 @@ export default function Contact() {
                 disabled={loading}
                 whileHover={loading ? {} : { scale: 1.02 }}
                 whileTap={loading ? {} : { scale: 0.98 }}
-                className="w-full py-4 rounded-xl font-black text-sm tracking-wider uppercase text-white shadow-lg transition-shadow mt-2 disabled:opacity-60 disabled:cursor-not-allowed"
+                className="w-full py-4 rounded-xl font-black text-base tracking-wider uppercase text-white shadow-lg transition-shadow mt-2 disabled:opacity-60 disabled:cursor-not-allowed"
                 style={{ background: '#E03D1E' }}
               >
                 {loading ? '…' : t('contact.send')}
@@ -155,7 +155,7 @@ export default function Contact() {
         >
           <div className="flex items-center gap-3">
             <div className="w-6 h-0.5 bg-vermilion/50" />
-            <span className="text-vermilion/60 text-[10px] font-black tracking-[0.45em] uppercase">
+            <span className="text-vermilion/60 text-xs font-black tracking-[0.45em] uppercase">
               Voice of the Desert
             </span>
           </div>
@@ -198,10 +198,10 @@ export default function Contact() {
           transition={{ delay: 0.7 }}
           className="mt-12 space-y-2 text-center"
         >
-          <p className="text-white/20 text-xs tracking-wider">
+          <p className="text-white/20 text-sm tracking-wider">
             {t('contact.rights')}
           </p>
-          <p className="text-white/15 text-[10px] tracking-[0.3em] uppercase">
+          <p className="text-white/15 text-xs tracking-[0.3em] uppercase">
             Powered by <span className="text-white/30 font-semibold">UGC Mongolia®</span>
           </p>
         </motion.div>

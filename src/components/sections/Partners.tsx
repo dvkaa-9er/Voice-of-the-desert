@@ -40,7 +40,7 @@ function LogoCard({ logo, nameMn, nameEn, delay, locale }: {
           sizes="(max-width: 640px) 45vw, (max-width: 1024px) 30vw, 200px"
         />
       </div>
-      <p className="text-[#1a1a14]/70 text-[10px] font-semibold text-center leading-snug line-clamp-2 w-full">
+      <p className="text-[#1a1a14]/70 text-xs font-semibold text-center leading-snug line-clamp-2 w-full">
         {locale === 'mn' ? nameMn : nameEn}
       </p>
     </motion.div>
@@ -67,7 +67,7 @@ export default function Partners() {
         >
           <div className="flex items-center gap-3">
             <div className="w-8 h-px bg-gold/60" />
-            <p className="text-gold/70 text-[10px] font-black tracking-[0.5em] uppercase">Global Coalition</p>
+            <p className="text-gold/70 text-xs font-black tracking-[0.5em] uppercase">Global Coalition</p>
           </div>
           <h2 className="text-[clamp(32px,5.5vw,64px)] font-black text-white leading-tight">{t('partners.title')}</h2>
           <p className="text-white/55 text-base max-w-xl">{t('partners.subtitle')}</p>
@@ -80,7 +80,7 @@ export default function Partners() {
           transition={{ delay: 0.15, duration: 0.7 }}
           className="space-y-5"
         >
-          <p className="text-white/30 text-[10px] font-black tracking-[0.45em] uppercase">
+          <p className="text-white/30 text-xs font-black tracking-[0.45em] uppercase">
             {locale === 'mn' ? 'Стратегийн түнш байгууллагууд' : 'Strategic Partners'}
           </p>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
@@ -97,7 +97,7 @@ export default function Partners() {
           transition={{ delay: 0.35, duration: 0.7 }}
           className="space-y-5"
         >
-          <p className="text-white/30 text-[10px] font-black tracking-[0.45em] uppercase">
+          <p className="text-white/30 text-xs font-black tracking-[0.45em] uppercase">
             {locale === 'mn' ? 'Хамтрагч байгууллагууд' : 'Collaborating Partners'}
           </p>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">

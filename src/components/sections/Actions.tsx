@@ -69,7 +69,7 @@ function PillarCard({ pillar, index, inView }: { pillar: typeof PILLARS[number];
         <span className="text-3xl mt-0.5">{pillar.icon}</span>
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 mb-1">
-            <span className="text-[10px] font-black tracking-[0.4em]" style={{ color: pillar.color }}>{pillar.index}</span>
+            <span className="text-xs font-black tracking-[0.4em]" style={{ color: pillar.color }}>{pillar.index}</span>
           </div>
           <h3 className="text-white font-black text-xl leading-tight">
             DESERT {pillar.word}
@@ -102,7 +102,7 @@ function PillarCard({ pillar, index, inView }: { pillar: typeof PILLARS[number];
               <div className="h-px" style={{ background: `linear-gradient(90deg, ${pillar.color}40, transparent)` }} />
 
               {/* Description */}
-              <p className="text-white/70 text-sm leading-[1.75]">
+              <p className="text-white/70 text-base leading-[1.75]">
                 {t(`actions.${pillar.key}.desc`)}
               </p>
 
@@ -113,7 +113,7 @@ function PillarCard({ pillar, index, inView }: { pillar: typeof PILLARS[number];
                     <div className="font-black text-sm leading-tight text-white">
                       {locale === 'mn' ? s.valueMn : s.valueEn}
                     </div>
-                    <div className="text-[10px] text-white/45 mt-1 leading-snug">
+                    <div className="text-xs text-white/45 mt-1 leading-snug">
                       {locale === 'mn' ? s.descMn : s.descEn}
                     </div>
                   </div>
@@ -121,7 +121,7 @@ function PillarCard({ pillar, index, inView }: { pillar: typeof PILLARS[number];
               </div>
 
               {/* Tag */}
-              <p className="text-white/45 text-xs leading-relaxed italic border-l-2 pl-3"
+              <p className="text-white/45 text-sm leading-relaxed italic border-l-2 pl-3"
                  style={{ borderColor: pillar.color + '60' }}>
                 {t(`actions.${pillar.key}.tag`)}
               </p>
@@ -151,12 +151,12 @@ export default function Actions() {
         >
           <div className="flex items-center gap-3">
             <div className="w-8 h-px bg-white/20" />
-            <span className="text-white/35 text-[10px] font-black tracking-[0.5em] uppercase">Initiative Framework</span>
+            <span className="text-white/35 text-xs font-black tracking-[0.5em] uppercase">Initiative Framework</span>
           </div>
           <h2 className="text-[clamp(32px,5.5vw,64px)] font-black text-white leading-[0.92] tracking-[-0.02em]">
             {t('actions.title')}
           </h2>
-          <p className="text-white/55 text-[clamp(14px,1.3vw,17px)] leading-relaxed max-w-2xl">
+          <p className="text-white/55 text-[clamp(16px,1.5vw,19px)] leading-relaxed max-w-2xl">
             {locale === 'mn'
               ? 'Дараах гурван тулгуур тус бүр нь бие даасан агуулга, үр дүнтэй боловч хамтдаа нэгдсэн нөлөөллийг бий болгоно.'
               : 'Each pillar operates independently with distinct outcomes — together they create a unified, compounding impact.'

@@ -47,7 +47,7 @@ export default function Hero({ onDonateClick }: { onDonateClick: () => void }) {
           className="flex items-center gap-3 mb-8"
         >
           <div className="w-5 h-px bg-vermilion/60" />
-          <span className="text-vermilion text-[10px] font-black tracking-[0.5em] uppercase">UNCCD COP17 Initiative</span>
+          <span className="text-vermilion text-xs font-black tracking-[0.5em] uppercase">UNCCD COP17 Initiative</span>
           <div className="w-5 h-px bg-vermilion/60" />
         </motion.div>
 
@@ -73,7 +73,7 @@ export default function Hero({ onDonateClick }: { onDonateClick: () => void }) {
           initial={{ opacity: 0, y: 20 }}
           animate={ready ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.38, duration: 0.8 }}
-          className="text-white/70 text-[clamp(14px,1.8vw,20px)] font-light leading-relaxed max-w-2xl mb-4"
+          className="text-white/70 text-[clamp(16px,2vw,22px)] font-light leading-relaxed max-w-2xl mb-4"
         >
           {locale === 'mn'
             ? 'Дэлхийн аварга Б.Буджаргалын манлайлсан 120 хоногийн тэсвэрийн экспедиц Евразийн хуурай газраар 16,000 км зам туулна. Маршрутын дагуу судлаачид газрын доройтлыг шинжилж, бүх километр нь дэлхийд дамжуулагдах түүх болно.'
@@ -86,7 +86,7 @@ export default function Hero({ onDonateClick }: { onDonateClick: () => void }) {
           initial={{ opacity: 0 }}
           animate={ready ? { opacity: 1 } : {}}
           transition={{ delay: 0.5, duration: 0.7 }}
-          className="text-white/50 text-[10px] font-black tracking-[0.45em] uppercase mb-12"
+          className="text-white/50 text-xs font-black tracking-[0.45em] uppercase mb-12"
         >
           {locale === 'mn'
             ? 'СПОРТ · ШИНЖЛЭХ УХААН · МЕДИА — ЦӨЛЖИЛТИЙН ЭСРЭГ'
@@ -102,11 +102,11 @@ export default function Hero({ onDonateClick }: { onDonateClick: () => void }) {
         >
           {STATS.map((s, i) => (
             <div key={i} className="bg-[#050508] px-3 py-4 sm:px-5 sm:py-5 flex flex-col items-center gap-1">
-              <span className="text-[clamp(22px,3vw,36px)] font-black text-white leading-none">{s.value}</span>
-              <span className="text-vermilion text-[9px] font-black tracking-[0.4em] uppercase">
+              <span className="text-[clamp(26px,3.5vw,42px)] font-black text-white leading-none">{s.value}</span>
+              <span className="text-vermilion text-[11px] font-black tracking-[0.4em] uppercase">
                 {locale === 'mn' ? s.unitMn : s.unitEn}
               </span>
-              <span className="text-white/40 text-[10px] text-center leading-tight mt-0.5">
+              <span className="text-white/40 text-xs text-center leading-tight mt-0.5">
                 {locale === 'mn' ? s.labelMn : s.labelEn}
               </span>
             </div>
@@ -122,7 +122,7 @@ export default function Hero({ onDonateClick }: { onDonateClick: () => void }) {
         >
           <button
             onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
-            className="group flex items-center gap-3 px-7 py-3.5 rounded-full border border-white/20 text-white/70 hover:text-white hover:border-white/40 text-sm font-semibold tracking-widest uppercase transition-all duration-200"
+            className="group flex items-center gap-3 px-7 py-3.5 rounded-full border border-white/20 text-white/70 hover:text-white hover:border-white/40 text-base font-semibold tracking-widest uppercase transition-all duration-200"
           >
             <span>{t('hero.cta')}</span>
             <motion.span
@@ -137,7 +137,7 @@ export default function Hero({ onDonateClick }: { onDonateClick: () => void }) {
             onClick={onDonateClick}
             whileHover={{ scale: 1.04 }}
             whileTap={{ scale: 0.97 }}
-            className="relative px-8 py-3.5 font-black text-sm tracking-widest uppercase text-white rounded-full overflow-hidden"
+            className="relative px-8 py-3.5 font-black text-base tracking-widest uppercase text-white rounded-full overflow-hidden"
             style={{ background: '#E03D1E' }}
           >
             {t('nav.donate')}
@@ -151,10 +151,10 @@ export default function Hero({ onDonateClick }: { onDonateClick: () => void }) {
         <motion.div
           animate={{ x: ['0%', '-50%'] }}
           transition={{ repeat: Infinity, duration: 24, ease: 'linear' }}
-          className="flex items-center gap-8 w-max py-3 pl-8"
+          className="flex items-center gap-8 w-max py-3.5 pl-8"
         >
           {[...TICKER_ITEMS, ...TICKER_ITEMS].map((item, i) => (
-            <span key={i} className="flex items-center gap-8 text-white/30 text-[10px] font-bold tracking-[0.5em] uppercase whitespace-nowrap">
+            <span key={i} className="flex items-center gap-8 text-white/30 text-[11px] font-bold tracking-[0.5em] uppercase whitespace-nowrap">
               {item}
               <span className="text-vermilion/30 text-[6px]">◆</span>
             </span>

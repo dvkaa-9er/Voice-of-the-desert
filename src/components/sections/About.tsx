@@ -63,7 +63,7 @@ export default function About() {
         >
           <div className="flex items-center gap-3">
             <div className="w-8 h-px bg-vermilion/60" />
-            <span className="text-vermilion/70 text-[10px] font-black tracking-[0.5em] uppercase">{t('about.subtitle')}</span>
+            <span className="text-vermilion/70 text-xs font-black tracking-[0.5em] uppercase">{t('about.subtitle')}</span>
           </div>
           <h2 className="text-[clamp(36px,6vw,72px)] font-black text-white leading-[0.92] tracking-[-0.02em]">
             {t('about.title')}
@@ -77,7 +77,7 @@ export default function About() {
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.15, duration: 0.8 }}
           >
-            <p className="text-white/75 text-[clamp(15px,1.5vw,18px)] leading-[1.8]">
+            <p className="text-white/75 text-[clamp(16px,1.6vw,20px)] leading-[1.8]">
               {t('about.body')}
             </p>
           </motion.div>
@@ -91,7 +91,7 @@ export default function About() {
           >
             <div className="relative w-12 h-12 shrink-0">
               <div className="absolute inset-0 rounded-full border border-vermilion/40" />
-              <div className="absolute inset-0 flex items-center justify-center text-vermilion font-black text-[8px] tracking-wider text-center leading-tight">UN<br/>CCD</div>
+              <div className="absolute inset-0 flex items-center justify-center text-vermilion font-black text-[10px] tracking-wider text-center leading-tight">UN<br/>CCD</div>
               <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 10, ease: 'linear' }} className="absolute inset-0">
                 <div className="w-2 h-2 rounded-full bg-vermilion absolute -top-1 left-1/2 -translate-x-1/2" />
               </motion.div>
@@ -114,7 +114,7 @@ export default function About() {
             initial={{ opacity: 0 }}
             animate={inView ? { opacity: 1 } : {}}
             transition={{ delay: 0.2, duration: 0.6 }}
-            className="text-white/35 text-[10px] font-black tracking-[0.45em] uppercase"
+            className="text-white/35 text-xs font-black tracking-[0.45em] uppercase"
           >
             {locale === 'mn' ? 'Бид юу болох вэ' : 'What we are'}
           </motion.p>
@@ -127,8 +127,8 @@ export default function About() {
                 transition={{ delay: 0.25 + i * 0.1, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
                 className="p-5 rounded-xl border border-white/8 bg-white/[0.025] space-y-2"
               >
-                <h4 className="text-white font-bold text-sm">{locale === 'mn' ? p.titleMn : p.titleEn}</h4>
-                <p className="text-white/55 text-xs leading-relaxed">{locale === 'mn' ? p.bodyMn : p.bodyEn}</p>
+                <h4 className="text-white font-bold text-base">{locale === 'mn' ? p.titleMn : p.titleEn}</h4>
+                <p className="text-white/55 text-sm leading-relaxed">{locale === 'mn' ? p.bodyMn : p.bodyEn}</p>
               </motion.div>
             ))}
           </div>
@@ -159,7 +159,7 @@ export default function About() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 6 }}
               transition={{ delay: 1.2, duration: 0.4 }}
-              className="absolute bottom-4 right-5 flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/60 border border-white/20 text-white/80 text-[11px] font-semibold tracking-wide backdrop-blur-sm hover:bg-black/80 hover:text-white transition-colors"
+              className="absolute bottom-4 right-5 flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/60 border border-white/20 text-white/80 text-xs font-semibold tracking-wide backdrop-blur-sm hover:bg-black/80 hover:text-white transition-colors"
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M3.63 3.63a1 1 0 0 0-1.41 1.41L7.29 10.1A5.995 5.995 0 0 0 6 14v3l-2 2v1h14.17l1.2 1.2a1 1 0 0 0 1.41-1.41L3.63 3.63zM12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-7.83V14c0-3.07-1.64-5.64-4.5-6.32V7c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68c-.24.06-.47.15-.69.24L18 18.17V14.17z"/>
@@ -170,7 +170,7 @@ export default function About() {
           )}
 
           <div className="absolute bottom-4 left-5 pointer-events-none">
-            <p className="text-white/50 text-[10px] font-semibold tracking-wider uppercase">
+            <p className="text-white/50 text-xs font-semibold tracking-wider uppercase">
               {locale === 'mn' ? 'Монголын Говь цөл — экспедицийн эхлэл' : 'Mongolian Gobi — where the expedition begins'}
             </p>
           </div>
@@ -183,7 +183,7 @@ export default function About() {
           transition={{ delay: 0.4, duration: 0.7 }}
           className="space-y-3"
         >
-          <p className="text-white/35 text-[10px] font-black tracking-[0.45em] uppercase">
+          <p className="text-white/35 text-xs font-black tracking-[0.45em] uppercase">
             {locale === 'mn' ? 'Маршрутын улсууд' : 'Countries on the route'}
           </p>
           <div className="flex flex-wrap gap-2">
@@ -193,7 +193,7 @@ export default function About() {
                 initial={{ opacity: 0, scale: 0.85 }}
                 animate={inView ? { opacity: 1, scale: 1 } : {}}
                 transition={{ delay: 0.45 + i * 0.05, duration: 0.4 }}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold border border-white/12 text-white/65 bg-white/[0.04] hover:border-vermilion/30 hover:text-white/85 transition-colors"
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-semibold border border-white/12 text-white/65 bg-white/[0.04] hover:border-vermilion/30 hover:text-white/85 transition-colors"
               >
                 <span className="text-base leading-none">{flag}</span>
                 {name}
