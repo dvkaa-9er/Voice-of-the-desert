@@ -109,7 +109,7 @@ function ShopContent() {
         >
           {isMn
             ? 'Экспедицийн онцгой цуглуулга — хязгаарлагдмал тооны хувцас, урлагийн хэвлэл, тоног төхөөрөмж. Эхний мэдэгдэл авахаар бүртгүүлнэ үү.'
-            : 'Limited-edition expedition gear — apparel, art prints, and trail equipment inspired by 12,000 km across Eurasia. Register to be first notified when the shop opens.'}
+            : 'Limited-edition expedition gear — apparel, art prints, and trail equipment inspired by 16,000 km across Eurasia. Register to be first notified when the shop opens.'}
         </motion.p>
 
         {/* Product teasers */}

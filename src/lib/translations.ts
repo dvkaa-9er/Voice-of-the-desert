@@ -22,7 +22,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     'about.title': 'The Mission',
     'about.subtitle': 'Aligned with UNCCD COP17',
     'about.body':
-      'Voice of the Desert is a Mongolia-led international initiative that unites sport, science and media to confront desertification — timed to the UNCCD COP17 global summit. It begins as a 120-day endurance expedition across roughly 12,000 kilometres of Eurasian drylands, led by world-champion ultra-runner B.Budjargal. Along the route, an international research team studies land degradation, livelihoods and the climate pressures reshaping the region. Every kilometre becomes a story — filmed, photographed and shared with the world.',
+      'Voice of the Desert is a Mongolia-led international initiative that unites sport, science and media to confront desertification — timed to the UNCCD COP17 global summit. It begins as a 120-day endurance expedition across roughly 16,000 kilometres of Eurasian drylands, led by world-champion ultra-runner B.Budjargal. Along the route, an international research team studies land degradation, livelihoods and the climate pressures reshaping the region. Every kilometre becomes a story — filmed, photographed and shared with the world.',
 
     // Stats
     'statsLabel.km': 'Kilometers',
@@ -39,7 +39,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     'actions.motion.title': 'Desert Motion',
     'actions.motion.subtitle': 'The endurance expedition — the visible engine that draws the world\'s attention.',
     'actions.motion.desc':
-      'A 120-day endurance expedition led by world-champion ultra-runner B.Budjargal, crossing roughly 12,000 km of Eurasian drylands. Motion is the pillar people see first — human effort against a hard landscape, broadcast in real time.',
+      'A 120-day endurance expedition led by world-champion ultra-runner B.Budjargal, crossing roughly 16,000 km of Eurasian drylands. Motion is the pillar people see first — human effort against a hard landscape, broadcast in real time.',
     'actions.motion.tag':
       'The brand is built on three interlocking pillars. Each carries its own name, role and visual accent — but they share one route, one camel, one voice.',
     'actions.motion.cta': 'Track Expedition',
@@ -115,7 +115,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     'about.title': 'Эрхэм зорилго',
     'about.subtitle': 'UNCCD COP17-той уялдаатай',
     'about.body':
-      '"Цөлийн дуу хоолой" нь спорт, шинжлэх ухаан, медиа гурвыг нэгтгэн цөлжилтийн асуудалд чиглэсэн, UNCCD COP17-тэй уялдан хэрэгжих Монголын санаачилгаар удирдагдсан олон улсын хөдөлгөөн юм. Дэлхийн аварга Б.Буджаргалын манлайлсан 120 хоногийн экспедиц Евразийн цөлжсөн бүс нутгийн 7 улсаар дамжин 12,000 километр зам туулна. Маршрутын дагуу олон улсын судалгааны баг газрын доройтол, амьжиргаа, уур амьсгалын дарамтыг судална. Тухайн газрын бодит түүх болж — кино, фото, дэлхийд түгээгдэнэ.',
+      '"Цөлийн дуу хоолой" нь спорт, шинжлэх ухаан, медиа гурвыг нэгтгэн цөлжилтийн асуудалд чиглэсэн, UNCCD COP17-тэй уялдан хэрэгжих Монголын санаачилгаар удирдагдсан олон улсын хөдөлгөөн юм. Дэлхийн аварга Б.Буджаргалын манлайлсан 120 хоногийн экспедиц Евразийн цөлжсөн бүс нутгийн 7 улсаар дамжин 16,000 километр зам туулна. Маршрутын дагуу олон улсын судалгааны баг газрын доройтол, амьжиргаа, уур амьсгалын дарамтыг судална. Тухайн газрын бодит түүх болж — кино, фото, дэлхийд түгээгдэнэ.',
 
     // Stats
     'statsLabel.km': 'Километр',
@@ -132,7 +132,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     'actions.motion.title': 'Desert Motion',
     'actions.motion.subtitle': 'Тэсвэрийн экспедиц — дэлхийн анхааралыг татах харагдах хөдөлгүүр.',
     'actions.motion.desc':
-      'Дэлхийн аварга Б.Буджаргалын манлайлсан 120 хоногийн тэсвэрийн экспедиц Евразийн хуурай газраар 12,000 км зам туулна. Motion бол хүмүүс хамгийн түрүүнд хардаг бүтэц — хатуу газар нутаг дээрх хүний тэсвэр хатуужил, бодит цаг хугацаанд дамжуулагдана.',
+      'Дэлхийн аварга Б.Буджаргалын манлайлсан 120 хоногийн тэсвэрийн экспедиц Евразийн хуурай газраар 16,000 км зам туулна. Motion бол хүмүүс хамгийн түрүүнд хардаг бүтэц — хатуу газар нутаг дээрх хүний тэсвэр хатуужил, бодит цаг хугацаанд дамжуулагдана.',
     'actions.motion.tag':
       'Брэнд нь гурван хоорондоо уялдсан бүтэц дээр тулгуурладаг. Тус бүр өөр гэрийн нэр, үүрэг, өнгөн тодотголтой — гэвч нэг маршрут, нэг тэмээ, нэг дуу хоолойг хуваалцана.',
     'actions.motion.cta': 'Экспедицийг дагах',

@@ -80,7 +80,7 @@ export default function Merch() {
             <p className="text-white/45 text-sm md:text-base leading-relaxed max-w-lg">
               {isMn
                 ? 'Хязгаарлагдмал тооны экспедицийн хувцас, урлагийн хэвлэл, тоног төхөөрөмж. Дэлгүүр тун удахгүй нээгдэнэ.'
-                : 'Limited-edition apparel, art prints, and expedition gear — each piece carries the story of 12,000 km across Eurasia. Shop opening soon.'}
+                : 'Limited-edition apparel, art prints, and expedition gear — each piece carries the story of 16,000 km across Eurasia. Shop opening soon.'}
             </p>
           </div>
 

@@ -5,14 +5,14 @@ import { motion } from 'framer-motion'
 import { useLanguage } from '@/components/providers/LanguageProvider'
 
 const STATS = [
-  { value: '12,000', unitMn: 'КМ',     unitEn: 'KM',      labelMn: 'Экспедицийн зам', labelEn: 'Expedition route' },
+  { value: '16,000', unitMn: 'КМ',     unitEn: 'KM',      labelMn: 'Экспедицийн зам', labelEn: 'Expedition route' },
   { value: '7',      unitMn: 'УЛС',    unitEn: 'NATIONS', labelMn: 'Дамжих улс',       labelEn: 'Countries crossed' },
   { value: '120',    unitMn: 'ӨДӨР',   unitEn: 'DAYS',    labelMn: 'Үргэлжлэх хугацаа', labelEn: 'Expedition duration' },
   { value: '100M+',  unitMn: 'ХҮРЭХ',  unitEn: 'REACH',   labelMn: 'Олон нийтийн хүрэх', labelEn: 'Global audience' },
 ]
 
 const TICKER_ITEMS = [
-  'DESERT MOTION', '12,000 KM', 'DESERT SCIENCE', '7 NATIONS',
+  'DESERT MOTION', '16,000 KM', 'DESERT SCIENCE', '7 NATIONS',
   'DESERT VOICE', '120 DAYS', 'UNCCD COP17', '100M+ REACH',
 ]
 
@@ -76,8 +76,8 @@ export default function Hero({ onDonateClick }: { onDonateClick: () => void }) {
           className="text-white/70 text-[clamp(14px,1.8vw,20px)] font-light leading-relaxed max-w-2xl mb-4"
         >
           {locale === 'mn'
-            ? 'Дэлхийн аварга Б.Буджаргалын манлайлсан 120 хоногийн тэсвэрийн экспедиц Евразийн хуурай газраар 12,000 км зам туулна. Маршрутын дагуу судлаачид газрын доройтлыг шинжилж, бүх километр нь дэлхийд дамжуулагдах түүх болно.'
-            : 'A 120-day endurance expedition led by world-champion ultra-runner B.Budjargal, crossing 12,000 km of Eurasian drylands. Along the route, researchers study land degradation — and every kilometre becomes a story shared with the world.'
+            ? 'Дэлхийн аварга Б.Буджаргалын манлайлсан 120 хоногийн тэсвэрийн экспедиц Евразийн хуурай газраар 16,000 км зам туулна. Маршрутын дагуу судлаачид газрын доройтлыг шинжилж, бүх километр нь дэлхийд дамжуулагдах түүх болно.'
+            : 'A 120-day endurance expedition led by world-champion ultra-runner B.Budjargal, crossing 16,000 km of Eurasian drylands. Along the route, researchers study land degradation — and every kilometre becomes a story shared with the world.'
           }
         </motion.p>
 
